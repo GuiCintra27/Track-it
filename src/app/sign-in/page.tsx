@@ -2,12 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Form } from "../components/form";
-import { Main } from "./page.styles";
+import { Form } from "../components/UI/form";
+import { AuthLayout } from "../components/common/auth/layout";
 
 export default function SignIn() {
   return (
-    <Main>
+    <AuthLayout>
       <Image
         priority
         src="/logo.svg"
@@ -24,6 +24,6 @@ export default function SignIn() {
       </Form.Root>
 
       <Link href={"/sign-up"}>Não tem uma conta? Cadastre-se!</Link>
-    </Main>
+    </AuthLayout>
   );
 }

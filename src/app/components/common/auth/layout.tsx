@@ -1,4 +1,9 @@
+import React from "react";
 import { styled } from "styled-components";
+
+export function AuthLayout({ children }: { children: React.ReactNode }) {
+  return <Main>{children}</Main>;
+}
 
 export const Main = styled.main`
   width: 100%;
