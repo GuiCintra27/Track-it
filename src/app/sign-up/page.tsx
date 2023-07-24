@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Form } from "../components/UI/form";
 import { FormEvent, useRef, useState } from "react";
-import { AuthLayout } from "../components/common/auth/layout";
+import { AuthLayout } from "../components/common/authLayout";
 
 export default function SignIn() {
   return (

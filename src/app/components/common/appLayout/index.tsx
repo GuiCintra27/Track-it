@@ -13,4 +13,24 @@ const Main = styled.main`
   flex-direction: column;
 
   background-color: var(--body-bg-color);
+
+  h3{
+    max-width: 90%;
+
+    margin-inline: auto;
+
+    font-size: 1.7rem;
+    color: var(--dark-gray);
+    font-weight: 400;
+    text-align: justify;
+  }
+
+  > :nth-child(2) {
+    margin-top: 2rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .createHabitCard{
+    margin-bottom: 3rem;
+  }
 `;
