@@ -1,12 +1,12 @@
-import { ReactNode } from "react";
+import { HtmlHTMLAttributes, ReactNode } from "react";
 import { styled } from "styled-components";
 
-interface TitleRootProps {
+interface TitleRootProps extends HtmlHTMLAttributes<HTMLDivElement>{
   children: ReactNode;
 }
 
-export function TitleRoot({ children }: TitleRootProps) {
-  return <Title>{children}</Title>;
+export function TitleRoot({ children, ...rest }: TitleRootProps) {
+  return <Title {...rest}>{children}</Title>;
 }
 
 const Title = styled.div`
@@ -17,4 +17,8 @@ const Title = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &.display-block{
+    display: block;
+  }
 `;

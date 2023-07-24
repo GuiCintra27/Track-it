@@ -14,10 +14,10 @@ export default function Home() {
     <AppLayout>
       <Header />
       <Title.Root>
-        <Title.Title>Meus hábitos</Title.Title>
+        <Title.Title text="Meus hábitos"/>
         <Title.AddHabitButton />
       </Title.Root>
-      {!habits /* && habits?.length > 0 */ ? (
+      {habits && habits?.length > 0 ? (
         <Habit.Root>
           <Habit.Header>
             <Habit.Title text="Ler 1 capítulo de livro" />
@@ -26,7 +26,7 @@ export default function Home() {
           <Habit.DaysBox editable={false} />
         </Habit.Root>
       ) : (
-        <h3>
+        <h3  className="has-no-habits-subtitle">
           Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
           começar a trackear!
         </h3>

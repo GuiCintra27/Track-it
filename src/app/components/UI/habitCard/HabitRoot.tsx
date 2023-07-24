@@ -22,4 +22,12 @@ const Container = styled.div`
   border-radius: 5px;
 
   background-color: #fff;
+
+  &.flex-direction-row{
+    flex-direction: row;
+  }
+
+  &.justify-content-space-between{
+    justify-content: space-between;
+  }
 `;

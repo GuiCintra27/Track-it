@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
 interface TitleTextProps {
-  children: string;
+  text: string;
 }
 
-export function TitleText({ children }: TitleTextProps) {
-  return <StyledTitle>{children}</StyledTitle>;
+export function TitleText({ text }: TitleTextProps) {
+  return <StyledTitle>{text}</StyledTitle>;
 }
 
 const StyledTitle = styled.h1`

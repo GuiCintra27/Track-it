@@ -5,8 +5,10 @@ import Link from "next/link";
 export function Footer() {
   return (
     <StyledFooter>
-      <Link href={"/habits"}>Hábitos</Link>
-      <ProgressBar percentage={30} />
+      <Link href={"/"}>Hábitos</Link>
+      <Link href={"/today"}>
+        <ProgressBar percentage={30} />
+      </Link>
       <Link href={"/history"}>Histórico</Link>
     </StyledFooter>
   );
@@ -27,8 +29,8 @@ const StyledFooter = styled.footer`
 
   background-color: #fff;
   color: var(--light-blue);
-  
-  a{
+
+  a {
     font-weight: 400;
     font-size: 1.8rem;
   }

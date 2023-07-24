@@ -14,7 +14,7 @@ const Main = styled.main`
 
   background-color: var(--body-bg-color);
 
-  h3{
+  .has-no-habits-subtitle{
     max-width: 90%;
 
     margin-inline: auto;
