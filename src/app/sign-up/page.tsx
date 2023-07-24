@@ -1,22 +1,14 @@
 "use client";
-import Image from "next/image";
+
 import Link from "next/link";
 
 import { Form } from "../components/UI/form";
-import { FormEvent, useRef, useState } from "react";
 import { AuthLayout } from "../components/common/authLayout";
 
 export default function SignIn() {
   return (
     <AuthLayout>
-      <Image
-        priority
-        src="/logo.svg"
-        height={180}
-        width={180}
-        alt="Track It"
-        className="logo"
-      />
+      <img src="/logo.svg" alt="Track It" />
 
       <Form.Root>
         <Form.Input placeholder="email" />

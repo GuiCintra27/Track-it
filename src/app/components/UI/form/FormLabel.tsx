@@ -1,19 +1,14 @@
-import Image from "next/image";
 import { LabelHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
-interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement>{
-  children: string
+interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  children: string;
 }
 
-export function FormLabel({ children,...rest }: FormLabelProps) {  
+export function FormLabel({ children, ...rest }: FormLabelProps) {
   return (
     <Label {...rest}>
-      <Image priority
-        src="/cloud-upload.png"
-        height={window.innerHeight*0.04}
-        width={window.innerHeight*0.04}
-        alt="Cloud Upload"/>
+      <img src="/cloud-upload.png" alt="Cloud Upload" />
       <span>{children}</span>
     </Label>
   );
@@ -34,7 +29,12 @@ const Label = styled.label`
   color: var(--light-blue);
   font-size: 1.5rem;
 
-  span{
-    font-family:"Lexend Deca";
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  span {
+    font-family: "Lexend Deca";
   }
 `;
