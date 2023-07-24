@@ -17,16 +17,10 @@ export default function Home() {
         <Title.Title>Meus hábitos</Title.Title>
         <Title.AddHabitButton />
       </Title.Root>
-      <Habit.Root className="createHabitCard">
-        <Habit.Input placeholder="nome do hábito" />
-        <Habit.DaysBox editable={true} />
-        <Habit.Actions>
-          <Habit.Button className="white">Cancelar</Habit.Button>
-          <Habit.Button>Salvar</Habit.Button>
-        </Habit.Actions>
-      </Habit.Root>
-      {habits && habits?.length > 0 ? (
-        <></>
+      {!habits /* && habits?.length > 0 */ ? (
+        <Habit.Root>
+          <Habit.DaysBox editable={false} />
+        </Habit.Root>
       ) : (
         <h3>
           Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para

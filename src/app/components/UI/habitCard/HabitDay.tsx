@@ -9,10 +9,16 @@ interface HabitDayPops {
 export function HabitDay({ children, editable }: HabitDayPops) {
   const [selected, setSelected] = useState(false);
 
+  function selectHabit(editable: boolean) {
+    if (editable) {
+      setSelected(!selected);
+    }
+  }
+
   return (
     <Container
       className={selected ? "selected" : undefined}
-      onClick={() => setSelected(!selected)}
+      onClick={() => selectHabit(editable)}
     >
       <p>{children}</p>
     </Container>
