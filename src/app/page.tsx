@@ -19,6 +19,10 @@ export default function Home() {
       </Title.Root>
       {!habits /* && habits?.length > 0 */ ? (
         <Habit.Root>
+          <Habit.Header>
+            <Habit.Title text="Ler 1 capítulo de livro" />
+            <Habit.DeleteIcon />
+          </Habit.Header>
           <Habit.DaysBox editable={false} />
         </Habit.Root>
       ) : (
