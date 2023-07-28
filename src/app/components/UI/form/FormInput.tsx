@@ -1,8 +1,14 @@
 import { InputHTMLAttributes } from "react";
+import { useFormContext } from "react-hook-form";
 import { styled } from "styled-components";
 
-export function FormInput({ ...rest }: InputHTMLAttributes<HTMLInputElement>) {
-  return <Input {...rest} />;
+interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string
+}
+
+export function FormInput({ ...rest }: FormInputProps) {
+  const { register } = useFormContext();
+  return <Input {...rest} {...register(rest.name)} />;
 }
 
 const Input = styled.input`
@@ -24,7 +30,7 @@ const Input = styled.input`
     color: var(--placeholder);
   }
 
-  &.hidden{
+  &.hidden {
     display: none;
   }
 `;

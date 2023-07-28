@@ -23,8 +23,8 @@ const Button = styled.button`
   text-align: center;
   font-size: 2rem;
 
-  &:hover {
-    filter: brightness(1.5);
+  &:active {
+    filter: brightness(.9);
   }
 
   &.white {
