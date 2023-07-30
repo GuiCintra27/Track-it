@@ -1,4 +1,9 @@
-:root {
+"use client";
+
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  :root {
   --light-blue: #52b6ff;
   --dark-blue: #126ba5;
   --light-gray: #ebebeb;
@@ -31,3 +36,6 @@ body {
 a {
   color: inherit;
 }
+`;
+
+export default GlobalStyle;

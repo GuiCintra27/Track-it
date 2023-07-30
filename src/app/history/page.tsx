@@ -1,9 +1,9 @@
 "use client";
 
-import { Title } from "../components/UI/title";
-import { AppLayout } from "../components/common/appLayout";
-import { Footer } from "../components/common/footer";
-import { Header } from "../components/common/header";
+import { Title } from "../../components/UI/title";
+import { AppLayout } from "../../components/common/layouts/appLayout";
+import { Footer } from "../../components/common/footer";
+import { Header } from "../../components/common/header";
 
 export default function Home() {
   return (

@@ -5,9 +5,9 @@ import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Form } from "../components/UI/form";
-import { AuthLayout } from "../components/common/authLayout";
-import { signInSchema } from "../lib/validations/sign-in-schema";
+import { Form } from "../../components/UI/form";
+import { AuthLayout } from "../../components/common/layouts/authLayout";
+import { signInSchema } from "../../lib/validations/sign-in-schema";
 
 type SignInData = z.infer<typeof signInSchema>;
 

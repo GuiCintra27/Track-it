@@ -1,6 +1,6 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import StyledComponentsRegistry from "./lib/registry";
+import StyledComponentsRegistry from "../lib/registry";
+import GlobalStyle from "@/global/globalStyle";
 
 export const metadata: Metadata = {
   title: "TrackIt",
@@ -23,7 +23,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <GlobalStyle />
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
