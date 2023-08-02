@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import { styled } from "styled-components";
 
 interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,7 +7,22 @@ interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function FormButton({ children, ...rest }: FormButtonProps) {
-  return <Button {...rest}>{children}</Button>;
+  return (
+    <Button {...rest}>
+      {rest.disabled ? (
+        <ThreeDots
+          height="100%"
+          width="50"
+          radius="10"
+          color="#ffffff"
+          ariaLabel="three-dots-loading"
+          visible={true}
+        />
+      ) : (
+        children
+      )}
+    </Button>
+  );
 }
 
 const Button = styled.button`
@@ -15,16 +31,23 @@ const Button = styled.button`
 
   padding: 1rem;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 0.5rem;
   border: none;
   background: var(--light-blue);
 
   color: #fff;
-  text-align: center;
   font-size: 2rem;
 
   &:active {
-    filter: brightness(.9);
+    filter: brightness(0.9);
+  }
+
+  &:disabled {
+    opacity: 0.7;
   }
 
   &.white {

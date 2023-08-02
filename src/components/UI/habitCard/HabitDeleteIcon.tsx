@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 export function HabitDeleteIcon({ ...res }: HtmlHTMLAttributes<HTMLDivElement>) {
   return (
     <Icon {...res}>
-      <img src="/trash-icon.svg" alt="Delete" />
+      <img src="/icons/trash-icon.svg" alt="Delete" />
     </Icon>
   );
 }

@@ -11,7 +11,7 @@ export function HabitCheckIcon({ ...rest }: HabitCheckIconProps) {
 
   return (
     <Container onClick={handleClick} className={done ? "green" : undefined}>
-      <img src="/success-icon.svg" alt="Check Habit" />
+      <img src="/icons/success-icon.svg" alt="Check Habit" />
     </Container>
   );
 }

@@ -7,7 +7,7 @@ export function Header() {
   const [profileImage, setProfileImage] = useState<undefined>(undefined);
   return (
     <StyledHeader>
-      <img src="/track-it-word.svg" alt="Track-It" className="track-it-word" />
+      <img src="/logo/track-it-word.svg" alt="Track-It" className="track-it-word" />
 
       <img
         src={profileImage ? profileImage : "/undefined-user.png"}

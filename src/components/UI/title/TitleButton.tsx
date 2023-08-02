@@ -6,7 +6,7 @@ export function TitleButton({
 }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <StyledButton {...rest}>
-      <img src="/sum-icon.svg" alt="Adicionar Hábito" />
+      <img src="/icons/sum-icon.svg" alt="Adicionar Hábito" />
     </StyledButton>
   );
 }

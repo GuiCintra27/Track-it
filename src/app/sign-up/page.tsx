@@ -8,10 +8,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "../../components/UI/form";
 import { AuthLayout } from "../../components/common/layouts/authLayout";
 import { signUpSchema } from "../../lib/validations/sign-up-schema";
+import useSaveSignUp from "@/hooks/api/auth/useSaveSignUp";
 
 type SignUpData = z.infer<typeof signUpSchema>;
 
 export default function SignUp() {
+  const { signUp } = useSaveSignUp();
   const signUpForm = useForm<SignUpData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -26,13 +28,30 @@ export default function SignUp() {
     formState: { isSubmitting },
   } = signUpForm;
 
-  function handleSignUpForm(data: SignUpData) {
-    console.log(data);
+  async function handleSignUpForm(data: SignUpData) {
+    try {
+      const response = await signUp({ ...data });
+      console.log(response);
+    } catch (err: any) {
+      if (err.response?.status === 409) {
+        /*   Toast.fire({
+            icon: "error",
+            title: "Email ou número de telefone já cadastrado",
+            customClass: "sweet-toast",
+        }); */
+      } else {
+        /*   Toast.fire({
+            icon: "error",
+            title: "Houve um problema ao registrar usuário",
+            customClass: "sweet-toast",
+        }); */
+      }
+    }
   }
 
   return (
     <AuthLayout>
-      <img src="/logo.svg" alt="Track It" />
+      <img src="/logo/logo.svg" alt="Track It" />
 
       <FormProvider {...signUpForm}>
         <Form.Root onSubmit={handleSubmit(handleSignUpForm)}>

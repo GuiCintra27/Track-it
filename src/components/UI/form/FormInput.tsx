@@ -6,9 +6,9 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
 }
 
-export function FormInput({ ...rest }: FormInputProps) {
+export function FormInput({ name,...rest }: FormInputProps) {
   const { register } = useFormContext();
-  return <Input {...rest} {...register(rest.name)} />;
+  return <Input {...rest} {...register(name)} />;
 }
 
 const Input = styled.input`

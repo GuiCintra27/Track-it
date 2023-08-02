@@ -8,7 +8,7 @@ interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 export function FormLabel({ children, ...rest }: FormLabelProps) {
   return (
     <Label {...rest}>
-      <img src="/cloud-upload.png" alt="Cloud Upload" />
+      <img src="/icons/cloud-upload.png" alt="Cloud Upload" />
       <span>{children}</span>
     </Label>
   );
