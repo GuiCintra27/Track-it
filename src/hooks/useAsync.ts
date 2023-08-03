@@ -21,12 +21,6 @@ export default function useAsync(handler: Function, immediate = true) {
     }
   };
 
-  useEffect(() => {
-    if (immediate) {
-      act();
-    }
-  }, []);
-
   return {
     data,
     loading,

@@ -1,10 +1,16 @@
 "use client";
 
 import { Provider } from "react-redux";
+import { Lexend_Deca } from "next/font/google";
 
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyle from "@/global/globalStyle";
 import { store } from "@/global/store";
+
+const lexendDeca = Lexend_Deca({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -12,16 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
+    <html lang="pt-br" suppressHydrationWarning={true}>
+      <body className={lexendDeca.className}>
         <StyledComponentsRegistry>
           <Provider store={store}>{children}</Provider>
           <GlobalStyle />
