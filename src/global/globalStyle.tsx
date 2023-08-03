@@ -36,6 +36,10 @@ body {
 a {
   color: inherit;
 }
+
+.sweet-toast{
+    font-size: 14px;
+  }
 `;
 
 export default GlobalStyle;

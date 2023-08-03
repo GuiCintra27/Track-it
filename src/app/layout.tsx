@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+
+import { Provider } from "react-redux";
+
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyle from "@/global/globalStyle";
-
-export const metadata: Metadata = {
-  title: "TrackIt",
-  description: "Daily Habit Tracker",
-};
+import { store } from "@/global/store";
 
 export default function RootLayout({
   children,
@@ -24,8 +23,8 @@ export default function RootLayout({
       </head>
       <body>
         <StyledComponentsRegistry>
+          <Provider store={store}>{children}</Provider>
           <GlobalStyle />
-          {children}
         </StyledComponentsRegistry>
       </body>
     </html>

@@ -1,19 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { z } from "zod";
-import { FormProvider, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
 
+import { SignInData } from "@/lib/types/auth";
 import { Form } from "../../components/UI/form";
-import { AuthLayout } from "../../components/common/layouts/authLayout";
-import { signInSchema } from "../../lib/validations/sign-in-schema";
 import useSaveSignIn from "@/hooks/api/auth/useSaveSignIn";
-
-type SignInData = z.infer<typeof signInSchema>;
+import { errorToast, succesToast } from "@/components/UI/alerts";
+import { signInSchema } from "../../lib/validations/sign-in-schema";
+import { handleSignInForm } from "@/components/infra/fetch-logic/auth";
+import { AuthLayout } from "../../components/common/layouts/authLayout";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const { signIn } = useSaveSignIn();
+  const router = useRouter();
+
   const signInForm = useForm<SignInData>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -27,33 +32,18 @@ export default function SignIn() {
     formState: { isSubmitting },
   } = signInForm;
 
-  async function handleSignInForm(data: SignInData) {
-    try {
-      const response = await signIn({ ...data });
-      console.log(response);
-    } catch (err: any) {
-      if (err.response?.status === 409) {
-        /*   Toast.fire({
-            icon: "error",
-            title: "Email ou número de telefone já cadastrado",
-            customClass: "sweet-toast",
-        }); */
-      } else {
-        /*   Toast.fire({
-            icon: "error",
-            title: "Houve um problema ao registrar usuário",
-            customClass: "sweet-toast",
-        }); */
-      }
-    }
-  }
+  const signInFormProps = { dispatch, signIn, succesToast, errorToast, router };
 
   return (
     <AuthLayout>
       <img src="/logo/logo.svg" alt="Track It" />
 
       <FormProvider {...signInForm}>
-        <Form.Root onSubmit={handleSubmit(handleSignInForm)}>
+        <Form.Root
+          onSubmit={handleSubmit((data) =>
+            handleSignInForm({ data, ...signInFormProps })
+          )}
+        >
           <Form.Input name="email" type="text" placeholder="email" />
           <Form.Error field="email" />
 
