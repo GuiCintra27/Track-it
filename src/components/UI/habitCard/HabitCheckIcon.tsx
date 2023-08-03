@@ -1,5 +1,6 @@
-import { HtmlHTMLAttributes, useState } from "react";
+import Image from "next/image";
 import { styled } from "styled-components";
+import { HtmlHTMLAttributes, useState } from "react";
 
 interface HabitCheckIconProps extends HtmlHTMLAttributes<HTMLDivElement> {}
 
@@ -11,7 +12,7 @@ export function HabitCheckIcon({ ...rest }: HabitCheckIconProps) {
 
   return (
     <Container onClick={handleClick} className={done ? "green" : undefined}>
-      <img src="/icons/success-icon.svg" alt="Check Habit" />
+      <Image src="/icons/success-icon.svg" alt="Check Habit" className="img" />
     </Container>
   );
 }
@@ -33,7 +34,7 @@ const Container = styled.div`
     background-color: var(--green);
   }
 
-  img {
+  .img {
     width: 2.8rem;
     height: 3.5rem;
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -46,7 +47,7 @@ export default function SignUp() {
 
   return (
     <AuthLayout>
-      <img src="/logo/logo.svg" alt="Track It" />
+      <Image src="/logo/logo.svg" alt="Track It" className="img" />
 
       <FormProvider {...signUpForm}>
         <Form.Root

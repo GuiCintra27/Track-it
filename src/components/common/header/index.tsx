@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { styled } from "styled-components";
 
@@ -7,9 +8,13 @@ export function Header() {
   const [profileImage, setProfileImage] = useState<undefined>(undefined);
   return (
     <StyledHeader>
-      <img src="/logo/track-it-word.svg" alt="Track-It" className="track-it-word" />
+      <Image
+        src="/logo/track-it-word.svg"
+        alt="Track-It"
+        className="track-it-word"
+      />
 
-      <img
+      <Image
         src={profileImage ? profileImage : "/undefined-user.png"}
         alt="User Profile Image"
         className="profile-image "

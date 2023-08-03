@@ -1,12 +1,13 @@
-import { ButtonHTMLAttributes } from "react";
+import Image from "next/image";
 import { styled } from "styled-components";
+import { ButtonHTMLAttributes } from "react";
 
 export function TitleButton({
   ...rest
 }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <StyledButton {...rest}>
-      <img src="/icons/sum-icon.svg" alt="Adicionar Hábito" />
+      <Image src="/icons/sum-icon.svg" alt="Adicionar Hábito" className="img" />
     </StyledButton>
   );
 }
@@ -27,7 +28,7 @@ const StyledButton = styled.button`
     background-color: var(--dark-blue);
   }
 
-  img {
+  .img {
     width: 1.6rem;
   }
 `;

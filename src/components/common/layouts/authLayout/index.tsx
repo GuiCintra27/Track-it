@@ -18,7 +18,7 @@ export const Main = styled.main`
 
   padding-inline: 3.6rem;
 
-  img {
+  .img {
     height: 18rem;
     width: 18rem;
 
