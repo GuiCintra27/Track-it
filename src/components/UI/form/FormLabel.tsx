@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { styled } from "styled-components";
 import { LabelHTMLAttributes } from "react";
 
@@ -9,7 +8,7 @@ interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 export function FormLabel({ children, ...rest }: FormLabelProps) {
   return (
     <Label {...rest}>
-      <Image src="/icons/cloud-upload.png" alt="Cloud Upload" className="img" />
+      <img src="/icons/cloud-upload.png" alt="Cloud Upload"/>
       <span>{children}</span>
     </Label>
   );
@@ -30,7 +29,7 @@ const Label = styled.label`
   color: var(--light-blue);
   font-size: 1.5rem;
 
-  .img {
+  img {
     width: 1rem;
     height: 1rem;
   }

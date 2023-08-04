@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { styled } from "styled-components";
 import { HtmlHTMLAttributes, useState } from "react";
 
@@ -12,7 +11,7 @@ export function HabitCheckIcon({ ...rest }: HabitCheckIconProps) {
 
   return (
     <Container onClick={handleClick} className={done ? "green" : undefined}>
-      <Image src="/icons/success-icon.svg" alt="Check Habit" className="img" />
+      <img src="/icons/success-icon.svg" alt="Check Habit" />
     </Container>
   );
 }
@@ -34,7 +33,7 @@ const Container = styled.div`
     background-color: var(--green);
   }
 
-  .img {
+  img {
     width: 2.8rem;
     height: 3.5rem;
   }

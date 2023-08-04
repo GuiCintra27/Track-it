@@ -1,3 +1,4 @@
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface User {
@@ -14,14 +15,18 @@ interface User {
   };
 }
 
-const initialState: User = {};
+const initialState: User = {
+  apiData: useLocalStorage.getItem("userApiData"),
+  localData: useLocalStorage.getItem("userLocalData"),
+};
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUserApiData: (state, action: PayloadAction<User>) => {
+    setUserApiData: (state, action: PayloadAction<Pick<User, "apiData">>) => {
       state.apiData = action.payload.apiData;
+      useLocalStorage.setItem("userApiData", action.payload.apiData);
     },
   },
 });

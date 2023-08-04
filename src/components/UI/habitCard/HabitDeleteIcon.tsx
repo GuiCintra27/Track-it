@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { HtmlHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
 export function HabitDeleteIcon({ ...res }: HtmlHTMLAttributes<HTMLDivElement>) {
   return (
     <Icon {...res}>
-      <Image src="/icons/trash-icon.svg" alt="Delete" className="img" />
+      <img src="/icons/trash-icon.svg" alt="Delete" />
     </Icon>
   );
 }
@@ -15,7 +14,7 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
 
-  .img {
+  img {
     width: 1.3rem;
     height: 1.5rem;
   }

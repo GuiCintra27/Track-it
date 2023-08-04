@@ -1,28 +1,15 @@
-import { useState } from "react";
+export const useLocalStorage = {
+  getItem,
+  setItem,
+};
 
-export default function useLocalStorage(key: string, initialValue: {}) {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item !== "undefined" && item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      /* eslint-disable-next-line no-console */
-      console.log(error);
-      return initialValue;
-    }
-  });
+function getItem(key: string) {
+  if(typeof window !== 'undefined'){
+    const item = localStorage.getItem(key);
+    return item !== "undefined" && item ? JSON.parse(item) : undefined;
+  }
+}
 
-  const setValue = (value: any) => {
-    try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      /* eslint-disable-next-line no-console */
-      console.log(error);
-    }
-  };
-
-  return [storedValue, setValue];
+function setItem(key: string, value: any) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
