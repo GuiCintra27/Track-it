@@ -1,22 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import { Title } from "../components/UI/title";
 import { Habit } from "../components/UI/habitCard";
 import { Footer } from "../components/common/footer";
 import { Header } from "../components/common/header";
+import useSaveHabits from "@/hooks/api/auth/useHabits";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { AppLayout } from "../components/common/layouts/appLayout";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
   const userApiData = useAppSelector((state) => state.user.apiData);
-  const [habits, setHabits] = useState<undefined | []>(undefined);
+  const { habits } = useSaveHabits(userApiData?.token);
 
   useEffect(() => {
-    if (!userApiData ) router.push("/sign-in");
+    if (!userApiData) return router.push("/sign-in");
   }, []);
 
   return (
