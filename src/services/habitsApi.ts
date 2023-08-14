@@ -1,7 +1,7 @@
 import { CreateHabitData } from "@/lib/types/habits";
 import api from "./api";
 
-export async function getHabits(token: string | undefined): Promise<[]> {
+export async function getHabits(token: string | undefined): Promise<[{id: number, name: string, days: []}]> {
   const response = await api.get("/habits", {
     headers: {
       Authorization: `Bearer ${token}`,

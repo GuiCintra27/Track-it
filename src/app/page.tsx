@@ -51,58 +51,62 @@ export default function Home() {
     <AppLayout>
       <Header />
 
-      <Title.Root>
-        <Title.Title text="Meus hábitos" />
-        <Title.AddHabitButton
-          onClick={() => setToggleCreateCard(!toggleCreateCard)}
-        />
-      </Title.Root>
+      <div className="container">
+        <Title.Root>
+          <Title.Title text="Meus hábitos" />
+          <Title.AddHabitButton
+            onClick={() => setToggleCreateCard(!toggleCreateCard)}
+          />
+        </Title.Root>
 
-      {toggleCreateCard && (
-        <Habit.Root marginBottom="3rem">
-          <Habit.Input
-            type="text"
-            onChange={(e) => setHabitName(e.target.value)}
-            value={habitName}
-            disabled={habitsLoading}
-          />
-          <Habit.DaysBox
-            habitDays={habitDays}
-            setHabitDays={setHabitDays}
-            editable={true}
-            loading={habitsLoading}
-          />
-          <Habit.Actions>
-            <Habit.Button className="white" onClick={resetInputData}>
-              Cancelar
-            </Habit.Button>
-            <Habit.Button
-              submit={true}
-              onClick={() => handleCreateHabit(createHabitProps)}
+        {toggleCreateCard && (
+          <Habit.Root marginBottom="3rem">
+            <Habit.Input
+              type="text"
+              onChange={(e) => setHabitName(e.target.value)}
+              value={habitName}
               disabled={habitsLoading}
-            >
-              Salvar
-            </Habit.Button>
-          </Habit.Actions>
-        </Habit.Root>
-      )}
+            />
+            <Habit.DaysBox
+              habitDays={habitDays}
+              setHabitDays={setHabitDays}
+              editable={true}
+              loading={habitsLoading}
+            />
+            <Habit.Actions>
+              <Habit.Button className="white" onClick={resetInputData}>
+                Cancelar
+              </Habit.Button>
+              <Habit.Button
+                submit={true}
+                onClick={() => handleCreateHabit(createHabitProps)}
+                disabled={habitsLoading}
+              >
+                Salvar
+              </Habit.Button>
+            </Habit.Actions>
+          </Habit.Root>
+        )}
 
-      {habits && habits?.length > 0 ? (
-        <Habit.Root>
-          <Habit.Header>
-            <Habit.Title text="Ler 1 capítulo de livro" />
-            <Habit.DeleteIcon />
-          </Habit.Header>
-          <Habit.DaysBox editable={false} />
-        </Habit.Root>
-      ) : habitsLoading ? (
-        <LoaderRing />
-      ) : (
-        <h3 className="has-no-habits-subtitle">
-          Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
-          começar a trackear!
-        </h3>
-      )}
+        {habits && habits?.length > 0 ? (
+          habits.map((item: { id: number; name: string; days: [] }) => (
+            <Habit.Root key={item.id} marginBottom="1rem">
+              <Habit.Header>
+                <Habit.Title text={item.name} />
+                <Habit.DeleteIcon />
+              </Habit.Header>
+              <Habit.DaysBox habitDays={item.days} editable={false} />
+            </Habit.Root>
+          ))
+        ) : habitsLoading ? (
+          <LoaderRing />
+        ) : (
+          <h3 className="has-no-habits-subtitle">
+            Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
+            começar a trackear!
+          </h3>
+        )}
+      </div>
 
       <Footer />
     </AppLayout>

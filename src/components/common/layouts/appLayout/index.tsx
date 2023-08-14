@@ -14,7 +14,7 @@ const Main = styled.main`
 
   background-color: var(--body-bg-color);
 
-  .has-no-habits-subtitle{
+  .has-no-habits-subtitle {
     max-width: 90%;
 
     margin-inline: auto;
@@ -25,12 +25,21 @@ const Main = styled.main`
     text-align: justify;
   }
 
-  > :nth-child(2) {
-    margin-top: 2rem;
-    margin-bottom: 2.2rem;
+  .createHabitCard {
+    margin-bottom: 3rem;
   }
 
-  .createHabitCard{
-    margin-bottom: 3rem;
+  .container {
+    max-height: 100%;
+    overflow-y: scroll;
+
+    > :first-child {
+      margin-top: 2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    > :last-child {
+      margin-bottom: 4rem;
+    }
   }
 `;
