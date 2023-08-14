@@ -1,17 +1,36 @@
 import { styled } from "styled-components";
+
 import { HabitDay } from "./HabitDay";
+import { Dispatch, SetStateAction } from "react";
 
 interface HabitDaysBoxProps {
   editable: boolean;
+  habitDays?: number[];
+  setHabitDays?: Dispatch<SetStateAction<number[]>>;
+  loading?: boolean;
 }
 
 const weekDays = ["D", "S", "T", "Q", "Q", "S", "S"];
 
-export function HabitDaysBox({ editable }: HabitDaysBoxProps) {
+export function HabitDaysBox({
+  habitDays,
+  setHabitDays,
+  editable,
+  loading,
+}: HabitDaysBoxProps) {
   return (
     <Container>
-      {weekDays.map((item,index ) => (
-        <HabitDay key={index} editable={editable}>{item}</HabitDay>
+      {weekDays.map((item, index) => (
+        <HabitDay
+          key={index}
+          editable={editable}
+          index={index}
+          habitDays={habitDays}
+          setHabitDays={setHabitDays}
+          loading={loading}
+        >
+          {item}
+        </HabitDay>
       ))}
     </Container>
   );

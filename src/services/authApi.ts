@@ -3,7 +3,7 @@ import { SignInData, SignUpData } from "@/lib/types/auth";
 
 export async function signIn({ email, password }: SignInData) {
   const response = await api.post("/auth/login", { email, password });
-  return response.status;
+  return response.data;
 }
 
 export async function signUp({ name, email, password }: SignUpData) {

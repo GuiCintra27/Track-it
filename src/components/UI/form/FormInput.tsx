@@ -1,6 +1,6 @@
+import { styled } from "styled-components";
 import { InputHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
-import { styled } from "styled-components";
 
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
@@ -22,7 +22,6 @@ const Input = styled.input`
   background: #fff;
 
   font-size: 2rem;
-  font-family: "Lexend Deca";
   color: var(--dark-gray);
 
   &::placeholder {

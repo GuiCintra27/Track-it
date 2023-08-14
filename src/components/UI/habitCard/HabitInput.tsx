@@ -17,15 +17,18 @@ const Input = styled.input`
   background: #fff;
 
   font-size: 2rem;
-  font-family: "Lexend Deca";
   color: var(--dark-gray);
+
+  &:disabled{
+    opacity: .7;
+  }
 
   &::placeholder {
     font-size: 2rem;
     color: var(--placeholder);
   }
 
-  &.hidden{
+  &.hidden {
     display: none;
   }
 `;
