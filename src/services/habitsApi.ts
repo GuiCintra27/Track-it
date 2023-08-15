@@ -1,23 +1,19 @@
 import { CreateHabitData } from "@/lib/types/habits";
-import api from "./api";
+import { authInstance } from "./authInstance";
 
-export async function getHabits(token: string | undefined): Promise<[{id: number, name: string, days: []}]> {
-  const response = await api.get("/habits", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export async function getHabits(): Promise<
+  [{ id: number; name: string; days: [] }]
+> {
+  const response = await authInstance.get("/habits");
   return response.data;
 }
 
-export async function postHabit(
-  body: CreateHabitData,
-  token: string | undefined
-): Promise<number> {
-  const response = await api.post("/habits", body, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export async function postHabit(body: CreateHabitData): Promise<number> {
+  const response = await authInstance.post("/habits", body);
+  return response.status;
+}
+
+export async function deleteHabit(habitId: number): Promise<number> {
+  const response = await authInstance.delete(`/habits/${habitId}`);
   return response.status;
 }

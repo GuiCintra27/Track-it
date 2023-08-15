@@ -17,9 +17,7 @@ import { handleCreateHabit } from "@/components/infra/fetch-logic/habits";
 export default function Home() {
   const router = useRouter();
   const userApiData = useAppSelector((state) => state.user.apiData);
-  const { habitsLoading, habits, reloadHabits } = habitsApi.getHabits(
-    userApiData?.token
-  );
+  const { habitsLoading, habits, reloadHabits } = habitsApi.getHabits();
   const { createHabit } = habitsApi.postCreateHabit();
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
@@ -28,7 +26,6 @@ export default function Home() {
     data: { name: habitName, days: habitDays },
     reloadHabits,
     createHabit,
-    token: userApiData?.token,
     errorToast,
     resetInputData,
   };
@@ -41,12 +38,8 @@ export default function Home() {
 
   useEffect(() => {
     if (!userApiData) return router.push("/sign-in");
-
-    //REFATORAR
-    //API DO LOGIN
-    //PARA FICAR IGUAL
-    //AO DO HABITS
   }, []);
+
   return (
     <AppLayout>
       <Header />
@@ -88,18 +81,18 @@ export default function Home() {
           </Habit.Root>
         )}
 
-        {habits && habits?.length > 0 ? (
-          habits.map((item: { id: number; name: string; days: [] }) => (
+        {habitsLoading ? (
+          <LoaderRing />
+        ) : habits && habits?.length > 0 ? (
+          habits.map((item: { id: string; name: string; days: [] }) => (
             <Habit.Root key={item.id} marginBottom="1rem">
               <Habit.Header>
                 <Habit.Title text={item.name} />
-                <Habit.DeleteIcon />
+                <Habit.DeleteIcon id={item.id} reloadHabits={reloadHabits} />
               </Habit.Header>
               <Habit.DaysBox habitDays={item.days} editable={false} />
             </Habit.Root>
           ))
-        ) : habitsLoading ? (
-          <LoaderRing />
         ) : (
           <h3 className="has-no-habits-subtitle">
             Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para

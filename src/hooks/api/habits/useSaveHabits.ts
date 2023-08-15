@@ -7,9 +7,7 @@ export function useSaveHabits() {
     loading: habitsLoading,
     error: habitsError,
     act: createHabit,
-  } = useAsync((body: CreateHabitData, token: string | undefined) =>
-    habitsApi.postHabit(body, token), false
-  );
+  } = useAsync((body: CreateHabitData) => habitsApi.postHabit(body), false);
 
   return {
     habitsLoading,

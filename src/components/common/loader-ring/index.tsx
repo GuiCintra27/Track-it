@@ -19,7 +19,7 @@ export function LoaderRing() {
 
 const Container = styled.div`
   width: 100%;
-  height: 60%;
+  height: 60vh;
 
   display: flex;
   align-items: center;

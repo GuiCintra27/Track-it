@@ -1,9 +1,20 @@
+import { handleDeleteHabit } from "@/components/infra/fetch-logic/habits";
+import { habitsApi } from "@/hooks/api/habits";
 import { HtmlHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
-export function HabitDeleteIcon({ ...res }: HtmlHTMLAttributes<HTMLDivElement>) {
+import { confirmAlert } from "../alerts";
+
+interface HabitDeleteIconProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  id: string;
+  reloadHabits: () => Promise<any>;
+}
+
+export function HabitDeleteIcon({ id, reloadHabits, ...res }: HabitDeleteIconProps) {
+  const { deleteHabit } = habitsApi.deleteHabit();
+
   return (
-    <Icon {...res}>
+    <Icon {...res} onClick={() => handleDeleteHabit({ id, deleteHabit, confirmAlert, reloadHabits })}>
       <img src="/icons/trash-icon.svg" alt="Delete" />
     </Icon>
   );

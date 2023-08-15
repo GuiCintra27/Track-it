@@ -36,3 +36,15 @@ export const warningToast = (text: string) => {
     customClass: "sweet-toast",
   });
 };
+
+export const confirmAlert = (title: string, text: string) =>
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#126ba5",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Continuar",
+    cancelButtonText: "Cancelar",
+  });

@@ -15,9 +15,14 @@ interface User {
   };
 }
 
+const userInfo = {
+  userApiData: "userApiData",
+  userLocalData: "userLocalData"
+}
+
 const initialState: User = {
-  apiData: useLocalStorage.getItem("userApiData"),
-  localData: useLocalStorage.getItem("userLocalData"),
+  apiData: useLocalStorage.getItem(userInfo.userApiData),
+  localData: useLocalStorage.getItem(userInfo.userLocalData),
 };
 
 export const userSlice = createSlice({
@@ -26,7 +31,7 @@ export const userSlice = createSlice({
   reducers: {
     setUserApiData: (state, action: PayloadAction<Pick<User, "apiData">>) => {
       state.apiData = action.payload.apiData;
-      useLocalStorage.setItem("userApiData", action.payload.apiData);
+      useLocalStorage.setItem(userInfo.userApiData, action.payload.apiData);
     },
   },
 });

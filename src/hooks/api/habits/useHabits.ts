@@ -1,13 +1,13 @@
 import useAsync from "../../useAsync";
 import * as habitsApi from "@/services/habitsApi";
 
-export function useHabits(token: string | undefined) {
+export function useHabits() {
   const {
     data: habits,
     loading: habitsLoading,
     error: habitsError,
     act: reloadHabits
-  } = useAsync((userToken = token) => habitsApi.getHabits(userToken));
+  } = useAsync(habitsApi.getHabits);
 
   return {
     habits,
