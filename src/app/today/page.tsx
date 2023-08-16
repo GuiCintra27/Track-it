@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 
 import { todayApi } from "@/hooks/api/today";
@@ -21,12 +22,14 @@ export default function Home() {
   const router = useRouter();
   const { checkHabit } = todayApi.checkHabit();
   const { uncheckHabit } = todayApi.uncheckHabit();
-  const { habits, habitsLoading, reloadHabits } = todayApi.getHabits();
+  const { reloadHabits } = todayApi.getHabits();
   const userApiData = useAppSelector((state) => state.user.apiData);
+  const todayHabits = useAppSelector((state) => state.todayHabits);
+  const dispatch = useDispatch();
 
   function handleHabitClick(done: boolean, id: number) {
-    if (!done) handleCheckHabit({ id, checkHabit, reloadHabits });
-    else handleUncheckHabit({ id, uncheckHabit, reloadHabits });
+    if (!done) handleCheckHabit({ id, checkHabit, reloadHabits, dispatch });
+    else handleUncheckHabit({ id, uncheckHabit, reloadHabits, dispatch });
   }
 
   useEffect(() => {
@@ -40,13 +43,13 @@ export default function Home() {
       <div className="container">
         <Title.Root className="display-block">
           <Title.Title />
-          <Title.Subtitle text="Nenhum hábito concluído ainda" />
+          <Title.Subtitle progress={todayHabits.progress} />
         </Title.Root>
 
-        {habitsLoading ? (
+        {todayHabits.loading ? (
           <LoaderRing />
         ) : (
-          habits.map((item: todayHabitsResponse) => (
+          todayHabits.habits?.map((item: todayHabitsResponse) => (
             <Habit.Root
               key={item.id}
               marginBottom="1rem"

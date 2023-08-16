@@ -1,13 +1,34 @@
+import Link from "next/link";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { styled } from "styled-components";
 import { ProgressBar } from "./circularProgressBar";
-import Link from "next/link";
+
+import { todayApi } from "@/hooks/api/today";
+import { setTodayHabits } from "@/components/infra/storage/habits-slice";
+import { useAppSelector } from "@/hooks/useAppSelector";
 
 export function Footer() {
+  const { habits, habitsLoading } = todayApi.getHabits();
+  const progess = useAppSelector((state) => state.todayHabits.progress);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+        dispatch(
+      setTodayHabits({
+        habits,
+        loading: habitsLoading,
+      })
+    );
+  }, [habits]);
+  //REFATORAR LOCAL STORAGE
+  //NÃO SE GUARDA EMAIL, NEM SENHA
+
   return (
     <StyledFooter>
       <Link href={"/"}>Hábitos</Link>
       <Link href={"/today"}>
-        <ProgressBar percentage={30} />
+        <ProgressBar percentage={progess ? progess : 0} />
       </Link>
       <Link href={"/history"}>Histórico</Link>
     </StyledFooter>

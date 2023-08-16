@@ -2,11 +2,20 @@ import { HtmlHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
 interface TitleSubtitleProps extends HtmlHTMLAttributes<HTMLHeadingElement> {
-  text: string;
+  progress?: number;
 }
 
-export function TitleSubtitle({ text, ...rest }: TitleSubtitleProps) {
-  return <StyledSubtitle {...rest}>{text}</StyledSubtitle>;
+export function TitleSubtitle({ progress, ...rest }: TitleSubtitleProps) {
+  return (
+    <StyledSubtitle
+      className={progress && progress > 0 ? "green" : ""}
+      {...rest}
+    >
+      {progress && progress > 0
+        ? `${progress}% dos hábitos concluídos`
+        : "Nenhum hábito concluído ainda"}
+    </StyledSubtitle>
+  );
 }
 
 const StyledSubtitle = styled.h3`
