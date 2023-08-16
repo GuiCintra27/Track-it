@@ -6,10 +6,9 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
+import { authApi } from "@/hooks/api/auth";
 import { SignUpData } from "@/lib/types/auth";
 import { Form } from "../../components/UI/form";
-import useSaveSignUp from "@/hooks/api/auth/useSaveSignUp";
-import useSaveSignIn from "@/hooks/api/auth/useSaveSignIn";
 import { errorToast, succesToast } from "@/components/UI/alerts";
 import { signUpSchema } from "../../lib/validations/sign-up-schema";
 import { handleSignUpForm } from "@/components/infra/fetch-logic/auth";
@@ -17,8 +16,8 @@ import { AuthLayout } from "../../components/common/layouts/authLayout";
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  const { signUp } = useSaveSignUp();
-  const { signIn } = useSaveSignIn();
+  const { signUp } = authApi.signUp();
+  const { signIn } = authApi.signIn();
   const router = useRouter();
 
   const signUpForm = useForm<SignUpData>({
