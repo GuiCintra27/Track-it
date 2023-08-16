@@ -10,5 +10,5 @@ export const createHabitSchema = z.object({
   .max(6)
   .array()
   .min(1, {message: "Pelo menos um dia da semana deve ser selecionado"})
-  .max(6)
+  .max(7)
 });
