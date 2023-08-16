@@ -16,6 +16,7 @@ import {
   handleCheckHabit,
   handleUncheckHabit,
 } from "@/components/infra/fetch-logic/todayHabits";
+import dayjs from "dayjs";
 
 export default function Home() {
   const router = useRouter();
@@ -23,6 +24,15 @@ export default function Home() {
   const { uncheckHabit } = todayApi.uncheckHabit();
   const { habits, habitsLoading, reloadHabits } = todayApi.getHabits();
   const userApiData = useAppSelector((state) => state.user.apiData);
+  const weekdays = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+  ];
 
   function handleHabitClick(done: boolean, id: number) {
     if (!done) handleCheckHabit({ id, checkHabit, reloadHabits });
@@ -39,7 +49,9 @@ export default function Home() {
 
       <div className="container">
         <Title.Root className="display-block">
-          <Title.Title text="Segunda, 17/05" />
+          <Title.Title
+            text={`${weekdays[dayjs().day()]}, ${dayjs().format("DD/MM")}`}
+          />
           <Title.Subtitle text="Nenhum hábito concluído ainda" />
         </Title.Root>
 
