@@ -1,16 +1,13 @@
 import { styled } from "styled-components";
-import { HtmlHTMLAttributes, useState } from "react";
+import { HtmlHTMLAttributes } from "react";
 
-interface HabitCheckIconProps extends HtmlHTMLAttributes<HTMLDivElement> {}
+interface HabitCheckIconProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  done: boolean;
+}
 
-export function HabitCheckIcon({ ...rest }: HabitCheckIconProps) {
-  const [done, setDone] = useState(false);
-  function handleClick() {
-    setDone(!done);
-  }
-
+export function HabitCheckIcon({ done, ...rest }: HabitCheckIconProps) {
   return (
-    <Container onClick={handleClick} className={done ? "green" : undefined}>
+    <Container {...rest} className={done ? "green" : undefined}>
       <img src="/icons/success-icon.svg" alt="Check Habit" />
     </Container>
   );

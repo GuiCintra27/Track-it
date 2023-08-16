@@ -8,12 +8,10 @@ export async function getHabits(): Promise<
   return response.data;
 }
 
-export async function postHabit(body: CreateHabitData): Promise<number> {
-  const response = await authInstance.post("/habits", body);
-  return response.status;
+export async function postHabit(body: CreateHabitData): Promise<void> {
+  await authInstance.post("/habits", body);
 }
 
-export async function deleteHabit(habitId: number): Promise<number> {
-  const response = await authInstance.delete(`/habits/${habitId}`);
-  return response.status;
+export async function deleteHabit(habitId: number): Promise<void> {
+  await authInstance.delete(`/habits/${habitId}`);
 }
