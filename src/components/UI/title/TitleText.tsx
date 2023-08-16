@@ -1,7 +1,10 @@
 import dayjs from "dayjs";
 import { styled } from "styled-components";
+interface TitleTextProps {
+  text?: string;
+}
 
-export function TitleText() {
+export function TitleText({ text }: TitleTextProps) {
   const weekdays = [
     "Domingo",
     "Segunda-feira",
@@ -14,7 +17,7 @@ export function TitleText() {
 
   return (
     <StyledTitle>
-      {`${weekdays[dayjs().day()]}, ${dayjs().format("DD/MM")}`}
+      {text ? text : `${weekdays[dayjs().day()]}, ${dayjs().format("DD/MM")}`}
     </StyledTitle>
   );
 }
