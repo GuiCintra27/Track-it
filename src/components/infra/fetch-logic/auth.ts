@@ -55,8 +55,6 @@ export async function handleSignInForm({
           id: response.id,
           name: response.name,
           image: response.image,
-          email: response.email,
-          password: response.password,
           token: response.token,
         },
       })

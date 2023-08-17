@@ -21,8 +21,6 @@ export function Footer() {
       })
     );
   }, [habits]);
-  //REFATORAR LOCAL STORAGE
-  //NÃO SE GUARDA EMAIL, NEM SENHA
 
   return (
     <StyledFooter>
