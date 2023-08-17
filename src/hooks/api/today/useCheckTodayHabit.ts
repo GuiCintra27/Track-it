@@ -1,7 +1,7 @@
 import useAsync from "../../useAsync";
 import * as todayApi from "@/services/todayApi";
 
-export function checkTodayHabit() {
+export function useCheckTodayHabit() {
   const {
     loading: checkHabitLoading,
     error: checkHabitError,

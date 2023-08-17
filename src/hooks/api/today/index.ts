@@ -1,9 +1,9 @@
-import { checkTodayHabit } from "./checkTodayHabit";
-import { uncheckTodayHabit } from "./uncheckTodayHabit";
+import { useCheckTodayHabit } from "./useCheckTodayHabit";
+import { useUncheckTodayHabit } from "./useUncheckTodayHabit";
 import { useTodayHabits } from "./useTodayHabits";
 
 export const todayApi = {
   getHabits: useTodayHabits,
-  checkHabit: checkTodayHabit,
-  uncheckHabit: uncheckTodayHabit
+  checkHabit: useCheckTodayHabit,
+  uncheckHabit: useUncheckTodayHabit
 };

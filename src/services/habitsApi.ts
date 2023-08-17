@@ -1,5 +1,5 @@
-import { CreateHabitData } from "@/lib/types/habits";
 import { authInstance } from "./authInstance";
+import { CreateHabitData } from "@/lib/types/habits";
 
 export async function getHabits(): Promise<
   [{ id: number; name: string; days: [] }]

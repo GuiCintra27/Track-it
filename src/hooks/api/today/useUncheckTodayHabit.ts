@@ -1,7 +1,7 @@
 import useAsync from "../../useAsync";
 import * as todayApi from "@/services/todayApi";
 
-export function uncheckTodayHabit() {
+export function useUncheckTodayHabit() {
   const {
     loading: uncheckHabitLoading,
     error: uncheckHabitError,
