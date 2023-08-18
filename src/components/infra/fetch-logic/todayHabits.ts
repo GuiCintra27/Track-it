@@ -1,6 +1,8 @@
 import { Dispatch } from "react";
-import { setTodayHabits } from "../storage/habits-slice";
 import { AnyAction } from "redux";
+
+import { setTodayHabits } from "../storage/habits-slice";
+import { errorToast } from "@/components/UI/alerts";
 
 interface handleTodayHabitProps {
   id: number;
@@ -25,7 +27,7 @@ export async function handleCheckHabit({
       })
     );
   } catch (error) {
-    console.log(error);
+    errorToast("oops... Recarregue página por favor");
   }
 }
 
@@ -44,6 +46,6 @@ export async function handleUncheckHabit({
       })
     );
   } catch (error) {
-    console.log(error);
+    errorToast("oops... Recarregue página por favor");
   }
 }

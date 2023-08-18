@@ -17,7 +17,8 @@ import { handleCreateHabit } from "@/components/infra/fetch-logic/habits";
 export default function Home() {
   const router = useRouter();
   const userApiData = useAppSelector((state) => state.user.apiData);
-  const { habitsLoading, habits, reloadHabits } = habitsApi.getHabits();
+  const { habitsLoading, habits, reloadHabits, habitsError } =
+    habitsApi.getHabits();
   const { createHabit } = habitsApi.postCreateHabit();
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
@@ -39,6 +40,11 @@ export default function Home() {
   useEffect(() => {
     if (!userApiData) return router.push("/sign-in");
   }, []);
+  
+  if (habits === null && !habitsLoading)
+    errorToast(
+      "Parece que houve um erro ao carregar os hábitos, tente recarregar a página :)"
+    );
 
   return (
     <AppLayout>
