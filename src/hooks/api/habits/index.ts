@@ -1,9 +1,31 @@
-import { useDeleteHabit } from "./useDeleteHabit";
-import {useHabits} from "./useHabits";
-import {useSaveHabits} from "./useSaveHabits";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-export const habitsApi = {
-  getHabits: useHabits,
-  postCreateHabit: useSaveHabits,
-  deleteHabit: useDeleteHabit
+import * as api from "@/services/habitsApi";
+
+export function useHabitsApi(){
+  const queryClient = useQueryClient();
+  
+  const { data: habits, isLoading: habitsLoading } = useQuery(
+    ["habits-list"],
+    api.getHabits
+  );
+  
+  const { mutate: createHabit } = useMutation(api.postHabit, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["habits-list"]);
+    },
+  });
+  
+  const { mutate: deleteHabit } = useMutation(api.deleteHabit, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["habits-list"]);
+    },
+  });
+  
+  return {
+    habits,
+    habitsLoading,
+    createHabit,
+    deleteHabit,
+  };
 }

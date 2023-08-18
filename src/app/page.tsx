@@ -3,29 +3,31 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { habitsApi } from "@/hooks/api/habits";
 import { Title } from "../components/UI/title";
+import { useHabitsApi } from "@/hooks/api/habits";
 import { Habit } from "../components/UI/habitCard";
 import { errorToast } from "@/components/UI/alerts";
 import { Footer } from "../components/common/footer";
 import { Header } from "../components/common/header";
+import { confirmAlert } from "@/components/UI/alerts";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { LoaderRing } from "@/components/common/loader-ring";
 import { AppLayout } from "../components/common/layouts/appLayout";
-import { handleCreateHabit } from "@/components/infra/fetch-logic/habits";
+import {
+  handleCreateHabit,
+  handleDeleteHabit,
+} from "@/components/infra/fetch-logic/habits";
 
 export default function Home() {
   const router = useRouter();
   const userApiData = useAppSelector((state) => state.user.apiData);
-  const { habitsLoading, habits, reloadHabits, habitsError } =
-    habitsApi.getHabits();
-  const { createHabit } = habitsApi.postCreateHabit();
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
   const [habitDays, setHabitDays] = useState<number[]>([]);
+  const { habits, habitsLoading, createHabit, deleteHabit } = useHabitsApi();
+
   const createHabitProps = {
     data: { name: habitName, days: habitDays },
-    reloadHabits,
     createHabit,
     errorToast,
     resetInputData,
@@ -40,7 +42,7 @@ export default function Home() {
   useEffect(() => {
     if (!userApiData) return router.push("/sign-in");
   }, []);
-  
+
   if (habits === null && !habitsLoading)
     errorToast(
       "Parece que houve um erro ao carregar os hábitos, tente recarregar a página :)"
@@ -90,15 +92,21 @@ export default function Home() {
         {habitsLoading ? (
           <LoaderRing />
         ) : habits && habits?.length > 0 ? (
-          habits.map((item: { id: string; name: string; days: [] }) => (
-            <Habit.Root key={item.id} marginBottom="1rem">
-              <Habit.Header>
-                <Habit.Title text={item.name} />
-                <Habit.DeleteIcon id={item.id} reloadHabits={reloadHabits} />
-              </Habit.Header>
-              <Habit.DaysBox habitDays={item.days} editable={false} />
-            </Habit.Root>
-          ))
+          habits.map(
+            ({ id, name, days }: { id: number; name: string; days: [] }) => (
+              <Habit.Root key={id} marginBottom="1rem">
+                <Habit.Header>
+                  <Habit.Title text={name} />
+                  <Habit.DeleteIcon
+                    onClick={() =>
+                      handleDeleteHabit({ id, deleteHabit, confirmAlert })
+                    }
+                  />
+                </Habit.Header>
+                <Habit.DaysBox habitDays={days} editable={false} />
+              </Habit.Root>
+            )
+          )
         ) : (
           <h3 className="has-no-habits-subtitle">
             Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para

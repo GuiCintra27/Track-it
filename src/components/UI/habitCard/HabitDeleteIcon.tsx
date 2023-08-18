@@ -1,29 +1,11 @@
 import { HtmlHTMLAttributes } from "react";
 import { styled } from "styled-components";
 
-import { confirmAlert } from "../alerts";
-import { habitsApi } from "@/hooks/api/habits";
-import { handleDeleteHabit } from "@/components/infra/fetch-logic/habits";
+interface HabitDeleteIconProps extends HtmlHTMLAttributes<HTMLDivElement> {}
 
-interface HabitDeleteIconProps extends HtmlHTMLAttributes<HTMLDivElement> {
-  id: string;
-  reloadHabits: () => Promise<any>;
-}
-
-export function HabitDeleteIcon({
-  id,
-  reloadHabits,
-  ...res
-}: HabitDeleteIconProps) {
-  const { deleteHabit } = habitsApi.deleteHabit();
-
+export function HabitDeleteIcon({ ...res }: HabitDeleteIconProps) {
   return (
-    <Icon
-      {...res}
-      onClick={() =>
-        handleDeleteHabit({ id, deleteHabit, confirmAlert, reloadHabits })
-      }
-    >
+    <Icon {...res}>
       <img src="/icons/trash-icon.svg" alt="Delete" />
     </Icon>
   );

@@ -1,17 +1,19 @@
 import Swal, { SweetAlertResult } from "sweetalert2";
+import { UseMutateFunction } from "@tanstack/react-query";
 
 import { createHabitSchema } from "@/lib/validations/create-habit-schema";
 
 interface HandleCreateHabitProps {
   data: { name: string; days: number[] };
-  createHabit: ({
-    name,
-    days,
-  }: {
-    name: string;
-    days: number[];
-  }) => Promise<any>;
-  reloadHabits: () => Promise<any>;
+  createHabit: UseMutateFunction<
+    void,
+    unknown,
+    {
+      name: string;
+      days: number[];
+    },
+    unknown
+  >;
   errorToast: (text: string) => void;
   resetInputData: () => void;
 }
@@ -19,7 +21,6 @@ interface HandleCreateHabitProps {
 export async function handleCreateHabit({
   data,
   createHabit,
-  reloadHabits,
   resetInputData,
   errorToast,
 }: HandleCreateHabitProps) {
@@ -27,7 +28,6 @@ export async function handleCreateHabit({
     const validation = createHabitSchema.safeParse(data);
     if (validation.success) {
       await createHabit(data);
-      reloadHabits();
       resetInputData();
     } else {
       const errors = validation.error.format();
@@ -41,25 +41,22 @@ export async function handleCreateHabit({
 }
 
 interface handleDeleteHabitProps {
-  id: string;
-  deleteHabit: (id: string) => Promise<any>;
+  id: number;
+  deleteHabit: UseMutateFunction<void, unknown, number, unknown>;
   confirmAlert: (title: string, text: string) => Promise<SweetAlertResult<any>>;
-  reloadHabits: () => Promise<any>;
 }
 
 export function handleDeleteHabit({
   id,
   deleteHabit,
   confirmAlert,
-  reloadHabits,
 }: handleDeleteHabitProps) {
   confirmAlert("Você tem certeza?", "Esta é uma ação irreversível").then(
-    async (response) => {
+    (response) => {
       if (response.isConfirmed) {
         try {
-          await deleteHabit(id);
+          deleteHabit(id);
           Swal.fire("Hábito deletado com sucesso", "", "success");
-          reloadHabits();
         } catch (error) {
           Swal.fire("Oops, parece que houve um erro...", "error");
         }
