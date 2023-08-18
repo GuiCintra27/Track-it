@@ -34,7 +34,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!userApiData) return router.push("/sign-in");
-  }, []);
+  });
 
   return (
     <AppLayout>

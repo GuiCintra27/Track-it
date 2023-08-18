@@ -20,7 +20,7 @@ export function Footer() {
         loading: habitsLoading,
       })
     );
-  }, [habits]);
+  }, [habits, habitsLoading, dispatch]);
 
   return (
     <StyledFooter>

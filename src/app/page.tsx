@@ -41,7 +41,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!userApiData) return router.push("/sign-in");
-  }, []);
+  });
 
   if (habits === null && !habitsLoading)
     errorToast(
