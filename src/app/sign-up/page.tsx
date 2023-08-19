@@ -16,8 +16,7 @@ import { AuthLayout } from "../../components/common/layouts/authLayout";
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  const { signUp } = authApi.signUp();
-  const { signIn } = authApi.signIn();
+  const { signIn, signUp } = authApi();
   const router = useRouter();
 
   const signUpForm = useForm<SignUpData>({

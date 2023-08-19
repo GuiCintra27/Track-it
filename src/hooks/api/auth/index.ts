@@ -1,7 +1,11 @@
-import useSaveSignIn from "./useSaveSignIn";
-import useSaveSignUp from "./useSaveSignUp";
+import { useMutation } from "@tanstack/react-query";
 
-export const authApi = {
-  signIn: useSaveSignIn,
-  signUp: useSaveSignUp
+import * as api from "@/services/authApi";
+
+export function authApi() {
+  const { mutate: signIn } = useMutation(api.signIn);
+
+  const { mutate: signUp } = useMutation(api.signUp);
+
+  return { signIn, signUp };
 }
