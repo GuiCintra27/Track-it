@@ -7,7 +7,10 @@ export function useTodayHabitsApi() {
 
   const { data: todayHabits, isLoading } = useQuery(
     ["today-habits-list"],
-    api.getTodayHabits
+    api.getTodayHabits,
+    {
+      staleTime: 5000,
+    }
   );
 
   const { mutate: checkHabit } = useMutation(api.checkTodayHabit, {
@@ -26,6 +29,6 @@ export function useTodayHabitsApi() {
     todayHabits,
     isLoading,
     checkHabit,
-    uncheckHabit
+    uncheckHabit,
   };
 }
