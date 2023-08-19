@@ -4,23 +4,23 @@ import { useDispatch } from "react-redux";
 import { styled } from "styled-components";
 import { ProgressBar } from "./circularProgressBar";
 
-import { todayApi } from "@/hooks/api/today";
-import { setTodayHabits } from "@/components/infra/storage/habits-slice";
+import { useTodayHabitsApi } from "@/hooks/api/today";
 import { useAppSelector } from "@/hooks/useAppSelector";
+import { setTodayHabits } from "@/components/infra/storage/habits-slice";
 
 export function Footer() {
-  const { habits, habitsLoading } = todayApi.getHabits();
+  const { todayHabits, isLoading } = useTodayHabitsApi();
   const progess = useAppSelector((state) => state.todayHabits.progress);
   const dispatch = useDispatch();
 
   useEffect(() => {
-        dispatch(
+    dispatch(
       setTodayHabits({
-        habits,
-        loading: habitsLoading,
+        habits: todayHabits,
+        loading: isLoading,
       })
     );
-  }, [habits, habitsLoading, dispatch]);
+  }, [todayHabits, isLoading, dispatch]);
 
   return (
     <StyledFooter>

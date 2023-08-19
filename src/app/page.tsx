@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
+import { useAuth } from "@/hooks/useAuth";
 import { Title } from "../components/UI/title";
 import { useHabitsApi } from "@/hooks/api/habits";
 import { Habit } from "../components/UI/habitCard";
 import { errorToast } from "@/components/UI/alerts";
-import { Footer } from "../components/common/footer";
 import { Header } from "../components/common/header";
+import { Footer } from "../components/common/footer";
 import { confirmAlert } from "@/components/UI/alerts";
-import { useAppSelector } from "@/hooks/useAppSelector";
 import { LoaderRing } from "@/components/common/loader-ring";
 import { AppLayout } from "../components/common/layouts/appLayout";
 import {
@@ -19,8 +18,8 @@ import {
 } from "@/components/infra/fetch-logic/habits";
 
 export default function Home() {
-  const router = useRouter();
-  const userApiData = useAppSelector((state) => state.user.apiData);
+  useAuth();
+
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
   const [habitDays, setHabitDays] = useState<number[]>([]);
@@ -38,10 +37,6 @@ export default function Home() {
     setHabitDays([]);
     setToggleCreateCard(false);
   }
-
-  useEffect(() => {
-    if (!userApiData) return router.push("/sign-in");
-  });
 
   if (habits === null && !habitsLoading)
     errorToast(

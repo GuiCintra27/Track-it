@@ -1,9 +1,31 @@
-import { useCheckTodayHabit } from "./useCheckTodayHabit";
-import { useUncheckTodayHabit } from "./useUncheckTodayHabit";
-import { useTodayHabits } from "./useTodayHabits";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-export const todayApi = {
-  getHabits: useTodayHabits,
-  checkHabit: useCheckTodayHabit,
-  uncheckHabit: useUncheckTodayHabit
-};
+import * as api from "@/services/todayApi";
+
+export function useTodayHabitsApi() {
+  const queryClient = useQueryClient();
+
+  const { data: todayHabits, isLoading } = useQuery(
+    ["today-habits-list"],
+    api.getTodayHabits
+  );
+
+  const { mutate: checkHabit } = useMutation(api.checkTodayHabit, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["today-habits-list"]);
+    },
+  });
+
+  const { mutate: uncheckHabit } = useMutation(api.uncheckTodayHabit, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["today-habits-list"]);
+    },
+  });
+
+  return {
+    todayHabits,
+    isLoading,
+    checkHabit,
+    uncheckHabit
+  };
+}

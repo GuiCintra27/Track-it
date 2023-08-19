@@ -1,50 +1,30 @@
-import { Dispatch } from "react";
-import { AnyAction } from "redux";
+import { UseMutateFunction } from "@tanstack/react-query";
 
-import { setTodayHabits } from "../storage/habits-slice";
 import { errorToast } from "@/components/UI/alerts";
 
 interface handleTodayHabitProps {
   id: number;
-  checkHabit: (id: number) => Promise<void>;
-  uncheckHabit: (id: number) => Promise<void>;
-  reloadHabits: () => Promise<any>;
-  dispatch: Dispatch<AnyAction>;
+  checkHabit: UseMutateFunction<void, unknown, number, unknown>;
+  uncheckHabit: UseMutateFunction<void, unknown, number, unknown>;
 }
 
-export async function handleCheckHabit({
+export function handleCheckHabit({
   id,
   checkHabit,
-  reloadHabits,
-  dispatch,
 }: Omit<handleTodayHabitProps, "uncheckHabit">) {
   try {
-    await checkHabit(id);
-    const response = await reloadHabits();
-    dispatch(
-      setTodayHabits({
-        habits: response,
-      })
-    );
+    checkHabit(id);
   } catch (error) {
     errorToast("oops... Recarregue página por favor");
   }
 }
 
-export async function handleUncheckHabit({
+export function handleUncheckHabit({
   id,
   uncheckHabit,
-  reloadHabits,
-  dispatch,
 }: Omit<handleTodayHabitProps, "checkHabit">) {
   try {
-    await uncheckHabit(id);
-    const response = await reloadHabits();
-    dispatch(
-      setTodayHabits({
-        habits: response,
-      })
-    );
+    uncheckHabit(id);
   } catch (error) {
     errorToast("oops... Recarregue página por favor");
   }

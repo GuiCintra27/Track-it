@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
-
-import { todayApi } from "@/hooks/api/today";
+import { useAuth } from "@/hooks/useAuth";
 import { Title } from "../../components/UI/title";
 import { Habit } from "../../components/UI/habitCard";
+import { useTodayHabitsApi } from "@/hooks/api/today";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { Footer } from "../../components/common/footer";
 import { Header } from "../../components/common/header";
@@ -19,22 +16,15 @@ import {
 } from "@/components/infra/fetch-logic/todayHabits";
 
 export default function Home() {
-  const router = useRouter();
-  const { checkHabit } = todayApi.checkHabit();
-  const { uncheckHabit } = todayApi.uncheckHabit();
-  const { reloadHabits } = todayApi.getHabits();
-  const userApiData = useAppSelector((state) => state.user.apiData);
+  useAuth();
+
+  const { checkHabit, uncheckHabit } = useTodayHabitsApi();
   const todayHabits = useAppSelector((state) => state.todayHabits);
-  const dispatch = useDispatch();
 
   function handleHabitClick(done: boolean, id: number) {
-    if (!done) handleCheckHabit({ id, checkHabit, reloadHabits, dispatch });
-    else handleUncheckHabit({ id, uncheckHabit, reloadHabits, dispatch });
+    if (!done) handleCheckHabit({ id, checkHabit });
+    else handleUncheckHabit({ id, uncheckHabit });
   }
-
-  useEffect(() => {
-    if (!userApiData) return router.push("/sign-in");
-  });
 
   return (
     <AppLayout>
@@ -49,36 +39,37 @@ export default function Home() {
         {todayHabits.loading ? (
           <LoaderRing />
         ) : (
-          todayHabits.habits?.map((item: todayHabitsResponse) => (
-            <Habit.Root
-              key={item.id}
-              marginBottom="1rem"
-              className="flex-direction-row justify-content-space-between"
-            >
-              <Habit.FlexBox>
-                <Habit.Header>
-                  <Habit.Title text={item.name} />
-                </Habit.Header>
-                <Habit.Data
-                  text="Sequência atual:"
-                  validation={item.done}
-                  days={item.currentSequence}
+          todayHabits.habits?.map(({ id, name, done, currentSequence, highestSequence,}: todayHabitsResponse) => (
+              <Habit.Root
+                key={id}
+                marginBottom="1rem"
+                className="flex-direction-row justify-content-space-between"
+              >
+                <Habit.FlexBox>
+                  <Habit.Header>
+                    <Habit.Title text={name} />
+                  </Habit.Header>
+                  <Habit.Data
+                    text="Sequência atual:"
+                    validation={done}
+                    days={currentSequence}
+                  />
+                  <Habit.Data
+                    text="Seu recorde:"
+                    validation={
+                      currentSequence === highestSequence &&
+                      highestSequence !== 0
+                    }
+                    days={highestSequence}
+                  />
+                </Habit.FlexBox>
+                <Habit.CheckIcon
+                  onClick={() => handleHabitClick(done, id)}
+                  done={done}
                 />
-                <Habit.Data
-                  text="Seu recorde:"
-                  validation={
-                    item.currentSequence === item.highestSequence &&
-                    item.highestSequence !== 0
-                  }
-                  days={item.highestSequence}
-                />
-              </Habit.FlexBox>
-              <Habit.CheckIcon
-                onClick={() => handleHabitClick(item.done, item.id)}
-                done={item.done}
-              />
-            </Habit.Root>
-          ))
+              </Habit.Root>
+            )
+          )
         )}
       </div>
 
