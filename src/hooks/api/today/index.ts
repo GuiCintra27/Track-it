@@ -5,7 +5,7 @@ import * as api from "@/services/todayApi";
 export function useTodayHabitsApi() {
   const queryClient = useQueryClient();
 
-  const { data: todayHabits, isLoading } = useQuery(
+  const { data: todayHabits, isFetching } = useQuery(
     ["today-habits-list"],
     api.getTodayHabits,
     {
@@ -27,7 +27,7 @@ export function useTodayHabitsApi() {
 
   return {
     todayHabits,
-    isLoading,
+    isFetching,
     checkHabit,
     uncheckHabit,
   };

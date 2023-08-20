@@ -9,7 +9,7 @@ import { useAppSelector } from "@/hooks/useAppSelector";
 import { setTodayHabits } from "@/components/infra/storage/habits-slice";
 
 export function Footer() {
-  const { todayHabits, isLoading } = useTodayHabitsApi();
+  const { todayHabits, isFetching } = useTodayHabitsApi();
   const progess = useAppSelector((state) => state.todayHabits.progress);
   const dispatch = useDispatch();
 
@@ -17,10 +17,10 @@ export function Footer() {
     dispatch(
       setTodayHabits({
         habits: todayHabits,
-        loading: isLoading,
+        loading: isFetching,
       })
     );
-  }, [todayHabits, isLoading, dispatch]);
+  }, [todayHabits, isFetching, dispatch]);
 
   return (
     <StyledFooter>

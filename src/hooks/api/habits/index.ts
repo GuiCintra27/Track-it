@@ -5,7 +5,7 @@ import * as api from "@/services/habitsApi";
 export function useHabitsApi() {
   const queryClient = useQueryClient();
 
-  const { data: habits, isLoading: habitsLoading } = useQuery(
+  const { data: habits, isFetching: habitsLoading } = useQuery(
     ["habits-list"],
     api.getHabits, {
       staleTime: Infinity,
