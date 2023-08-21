@@ -9,7 +9,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useAuthApi } from "@/hooks/api/auth";
 import { SignUpData } from "@/lib/types/auth";
 import { Form } from "../../components/UI/form";
-import { errorToast, succesToast } from "@/components/UI/alerts";
+import { errorToast, successToast } from "@/components/UI/alerts";
 import { signUpSchema } from "../../lib/validations/sign-up-schema";
 import { handleSignUpForm } from "@/components/infra/fetch-logic/auth";
 import { AuthLayout } from "../../components/common/layouts/authLayout";
