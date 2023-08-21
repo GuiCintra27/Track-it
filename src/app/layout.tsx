@@ -2,11 +2,11 @@
 
 import { Provider } from "react-redux";
 import { Lexend_Deca } from "next/font/google";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyle from "@/global/globalStyle";
 import { store } from "@/global/store";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const lexendDeca = Lexend_Deca({
   weight: ["400", "500", "600", "700"],

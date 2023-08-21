@@ -14,9 +14,11 @@ export default function Home() {
       <Title.Root>
         <Title.Title text="Histórico" />
       </Title.Root>
-      <h3 className="has-no-habits-subtitle">
-        Em breve você poderá ver o histórico dos seus hábitos aqui!
-      </h3>
+      <div className="container">
+        <h3 className="has-no-habits-subtitle">
+          Em breve você poderá ver o histórico dos seus hábitos aqui!
+        </h3>
+      </div>
       <Footer />
     </AppLayout>
   );

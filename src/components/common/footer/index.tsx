@@ -10,7 +10,7 @@ import { setTodayHabits } from "@/components/infra/storage/habits-slice";
 
 export function Footer() {
   const { todayHabits, isFetching } = useTodayHabitsApi();
-  const progess = useAppSelector((state) => state.todayHabits.progress);
+  const progress = useAppSelector((state) => state.todayHabits.progress);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,12 +21,12 @@ export function Footer() {
       })
     );
   }, [todayHabits, isFetching, dispatch]);
-
+  
   return (
     <StyledFooter>
       <Link href={"/"}>Hábitos</Link>
       <Link href={"/today"}>
-        <ProgressBar percentage={progess ? progess : 0} />
+        <ProgressBar percentage={progress ? progress : 0} />
       </Link>
       <Link href={"/history"}>Histórico</Link>
     </StyledFooter>
