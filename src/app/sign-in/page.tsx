@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { authApi } from "@/hooks/api/auth";
+import { useAuthApi } from "@/hooks/api/auth";
 import { SignInData } from "@/lib/types/auth";
 import { Form } from "../../components/UI/form";
 import { errorToast, succesToast } from "@/components/UI/alerts";
@@ -16,7 +16,7 @@ import { AuthLayout } from "../../components/common/layouts/authLayout";
 
 export default function SignIn() {
   const dispatch = useDispatch();
-  const { signIn } = authApi();
+  const { signIn } = useAuthApi();
   const router = useRouter();
 
   const signInForm = useForm<SignInData>({
