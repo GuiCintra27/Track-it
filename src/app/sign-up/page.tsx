@@ -37,7 +37,7 @@ export default function SignUp() {
     dispatch,
     signUp,
     signIn,
-    succesToast,
+    successToast,
     errorToast,
     router,
   };

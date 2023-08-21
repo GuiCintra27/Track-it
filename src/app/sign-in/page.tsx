@@ -9,7 +9,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useAuthApi } from "@/hooks/api/auth";
 import { SignInData } from "@/lib/types/auth";
 import { Form } from "../../components/UI/form";
-import { errorToast, succesToast } from "@/components/UI/alerts";
+import { errorToast, successToast } from "@/components/UI/alerts";
 import { signInSchema } from "../../lib/validations/sign-in-schema";
 import { handleSignInForm } from "@/components/infra/fetch-logic/auth";
 import { AuthLayout } from "../../components/common/layouts/authLayout";
@@ -32,7 +32,7 @@ export default function SignIn() {
     formState: { isSubmitting },
   } = signInForm;
 
-  const signInFormProps = { dispatch, signIn, succesToast, errorToast, router };
+  const signInFormProps = { dispatch, signIn, successToast, errorToast, router };
 
   return (
     <AuthLayout>

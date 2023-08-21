@@ -6,7 +6,7 @@ interface HandleFormProps {
   dispatch: any;
   signUp: any;
   signIn: any;
-  succesToast: any;
+  successToast: any;
   errorToast: any;
   router: any;
 }
@@ -16,7 +16,7 @@ export async function handleSignUpForm({
   dispatch,
   signUp,
   signIn,
-  succesToast,
+  successToast,
   errorToast,
   router,
 }: HandleFormProps) {
@@ -27,7 +27,7 @@ export async function handleSignUpForm({
       data: { email: data.email, password: data.password },
       dispatch,
       signIn,
-      succesToast,
+      successToast,
       errorToast,
       router,
     });
@@ -42,7 +42,7 @@ export async function handleSignInForm({
   data,
   dispatch,
   signIn,
-  succesToast,
+  successToast,
   errorToast,
   router,
 }: Omit<HandleFormProps, "signUp">) {
@@ -61,7 +61,7 @@ export async function handleSignInForm({
     );
     
     router.push("/");
-    succesToast("Login realizado!");
+    successToast("Login realizado!");
   } catch (err: any) {
     if (err.response?.status === 401) errorToast("Email ou senha inválidos!");
     else errorToast("Houve um erro ao conectar com o servidor");
