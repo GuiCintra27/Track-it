@@ -1,6 +1,7 @@
 "use client";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
 
-import { useAuth } from "@/hooks/useAuth";
 import { Title } from "../../components/UI/title";
 import { Habit } from "../../components/UI/habitCard";
 import { useTodayHabitsApi } from "@/hooks/api/today";
@@ -15,11 +16,14 @@ import {
   handleUncheckHabit,
 } from "@/components/infra/fetch-logic/todayHabits";
 
-export default function Home() {
-  useAuth();
-
+export default function Today() {
   const { checkHabit, uncheckHabit } = useTodayHabitsApi();
   const todayHabits = useAppSelector((state) => state.todayHabits);
+  const userApiData = useAppSelector((state) => state.user.apiData);
+
+  useEffect(() => {
+    if (!userApiData) redirect("/sign-in");
+  });
 
   function handleHabitClick(done: boolean, id: number) {
     if (!done) handleCheckHabit({ id, checkHabit });
@@ -39,7 +43,14 @@ export default function Home() {
         {todayHabits.loading ? (
           <LoaderRing />
         ) : (
-          todayHabits.habits?.map(({ id, name, done, currentSequence, highestSequence,}: todayHabitsResponse) => (
+          todayHabits.habits?.map(
+            ({
+              id,
+              name,
+              done,
+              currentSequence,
+              highestSequence,
+            }: todayHabitsResponse) => (
               <Habit.Root
                 key={id}
                 marginBottom="1rem"

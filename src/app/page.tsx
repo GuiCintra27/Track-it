@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { useAuth } from "@/hooks/useAuth";
 import { Title } from "../components/UI/title";
 import { useHabitsApi } from "@/hooks/api/habits";
 import { Habit } from "../components/UI/habitCard";
@@ -10,6 +10,7 @@ import { errorToast } from "@/components/UI/alerts";
 import { Header } from "../components/common/header";
 import { Footer } from "../components/common/footer";
 import { confirmAlert } from "@/components/UI/alerts";
+import { useAppSelector } from "@/hooks/useAppSelector";
 import { LoaderRing } from "@/components/common/loader-ring";
 import { AppLayout } from "../components/common/layouts/appLayout";
 import {
@@ -18,12 +19,16 @@ import {
 } from "@/components/infra/fetch-logic/habits";
 
 export default function Home() {
-  useAuth();
-
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
   const [habitDays, setHabitDays] = useState<number[]>([]);
-  const { habits, habitsLoading, createHabit, deleteHabit } = useHabitsApi();
+  const { habits, habitsLoading, createHabit, deleteHabit, habitsError } =
+    useHabitsApi();
+  const userApiData = useAppSelector((state) => state.user.apiData);
+
+  useEffect(() => {
+    if (!userApiData) redirect("/sign-in");
+  });
 
   const createHabitProps = {
     data: { name: habitName, days: habitDays },
@@ -38,7 +43,7 @@ export default function Home() {
     setToggleCreateCard(false);
   }
 
-  if (habits === null && !habitsLoading)
+  if (habitsError)
     errorToast(
       "Parece que houve um erro ao carregar os hábitos, tente recarregar a página :)"
     );

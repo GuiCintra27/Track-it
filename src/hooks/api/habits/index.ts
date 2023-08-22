@@ -5,13 +5,14 @@ import * as api from "@/services/habitsApi";
 export function useHabitsApi() {
   const queryClient = useQueryClient();
 
-  const { data: habits, isFetching: habitsLoading } = useQuery(
-    ["habits-list"],
-    api.getHabits, {
-      staleTime: Infinity,
-      cacheTime: Infinity
-    }
-  );
+  const {
+    data: habits,
+    isFetching: habitsLoading,
+    isError: habitsError,
+  } = useQuery(["habits-list"], api.getHabits, {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+  });
 
   const { mutate: createHabit } = useMutation(api.postHabit, {
     onSuccess: () => {
@@ -30,6 +31,7 @@ export function useHabitsApi() {
   return {
     habits,
     habitsLoading,
+    habitsError,
     createHabit,
     deleteHabit,
   };

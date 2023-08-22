@@ -5,6 +5,7 @@ interface HandleFormProps {
   data: SignUpData | SignInData;
   dispatch: any;
   signUp: any;
+  signInData: any;
   signIn: any;
   successToast: any;
   errorToast: any;
@@ -15,6 +16,7 @@ export async function handleSignUpForm({
   data,
   dispatch,
   signUp,
+  signInData,
   signIn,
   successToast,
   errorToast,
@@ -26,6 +28,7 @@ export async function handleSignUpForm({
     await handleSignInForm({
       data: { email: data.email, password: data.password },
       dispatch,
+      signInData,
       signIn,
       successToast,
       errorToast,
@@ -41,21 +44,22 @@ export async function handleSignUpForm({
 export async function handleSignInForm({
   data,
   dispatch,
+  signInData,
   signIn,
   successToast,
   errorToast,
   router,
 }: Omit<HandleFormProps, "signUp">) {
   try {
-    const response = await signIn({ ...data });
+    await signIn({ ...data });
 
     dispatch(
       setUserApiData({
         apiData: {
-          id: response.id,
-          name: response.name,
-          image: response.image,
-          token: response.token,
+          id: signInData.id,
+          name: signInData.name,
+          image: signInData.image,
+          token: signInData.token,
         },
       })
     );

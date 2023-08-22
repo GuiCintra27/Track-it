@@ -1,13 +1,20 @@
 "use client";
 
-import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
+
 import { Title } from "../../components/UI/title";
 import { Footer } from "../../components/common/footer";
 import { Header } from "../../components/common/header";
+import { useAppSelector } from "@/hooks/useAppSelector";
 import { AppLayout } from "../../components/common/layouts/appLayout";
 
-export default function Home() {
-  useAuth();
+export default function History() {
+  const userApiData = useAppSelector((state) => state.user.apiData);
+
+  useEffect(() => {
+    if (!userApiData) redirect("/sign-in");
+  });
   return (
     <AppLayout>
       <Header />
