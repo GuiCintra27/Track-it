@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { styled } from "styled-components";
+import { Menu } from "./menu";
 
 export function Header() {
+  const [toggleMenu, setToggleMenu] = useState(false);
   const [profileImage, setProfileImage] = useState<undefined>(undefined);
   return (
     <StyledHeader>
@@ -17,7 +19,10 @@ export function Header() {
         src={profileImage ? profileImage : "/undefined-user.png"}
         alt="User Profile Image"
         className="profile-image "
+        onClick={() => setToggleMenu(!toggleMenu)}
       />
+
+      {toggleMenu && <Menu />}
     </StyledHeader>
   );
 }
@@ -25,6 +30,8 @@ export function Header() {
 const StyledHeader = styled.header`
   width: 100%;
   height: fit-content;
+
+  position: relative;
 
   align-self: flex-start;
 

@@ -4,17 +4,17 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
+    --green: #8fc549;
+    --dark-blue: #126ba5;
   --light-blue: #52b6ff;
-  --dark-blue: #126ba5;
-  --light-gray: #ebebeb;
-  --medium-gray: #cfcfcf;
-  --body-bg-color: #f2f2f2;
-  --stroke: #d4d4d4;
   --dark-gray: #666666;
+  --default-subtitle: #bababa;
+  --medium-gray: #cfcfcf;
+  --stroke: #d4d4d4;
   --placeholder: #dbdbdb;
   --non-completed-habit: #e7e7e7;
-  --default-subtitle: #bababa;
-  --green: #8fc549;
+  --light-gray: #ebebeb;
+  --body-bg-color: #f2f2f2;
   font-family: "Lexend Deca";
 }
 
