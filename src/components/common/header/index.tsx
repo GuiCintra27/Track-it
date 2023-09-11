@@ -1,24 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { styled } from "styled-components";
+import { useAppSelector } from "@/hooks/useAppSelector";
+
 import { Menu } from "./menu";
 
 export function Header() {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [profileImage, setProfileImage] = useState<undefined>(undefined);
+  const { apiData, localData } = useAppSelector((state) => state.user);
+  const [profileImage, setProfileImage] = useState("/undefined-user.png");
+
+  useEffect(() => {
+    if (localData?.profileImage) setProfileImage(localData?.profileImage);
+    else if (apiData?.image) setProfileImage(apiData?.image);
+  }, [localData, apiData]);
+
   return (
     <StyledHeader>
-      <img
-        src="/logo/track-it-word.svg"
-        alt="Track-It"
-        className="track-it-word"
-      />
+      <Link href={"/"}>
+        <img
+          src="/logo/track-it-word.svg"
+          alt="Track-It"
+          className="track-it-word"
+        />
+      </Link>
 
       <img
         src={profileImage ? profileImage : "/undefined-user.png"}
         alt="User Profile Image"
-        className="profile-image "
+        className="profile-image"
         onClick={() => setToggleMenu(!toggleMenu)}
       />
 
@@ -51,6 +63,10 @@ const StyledHeader = styled.header`
 
   .profile-image {
     width: 5rem;
-    height: 5rem;
+
+    object-fit: cover;
+    aspect-ratio: 4/4;
+
+    border-radius: 100%;
   }
 `;

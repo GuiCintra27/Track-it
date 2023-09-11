@@ -41,5 +41,9 @@ const Main = styled.main`
     > :last-child {
       margin-bottom: 4rem;
     }
+
+    .margin-inline{
+      margin-inline: 8%;
+    }
   }
 `;

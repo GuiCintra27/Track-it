@@ -9,7 +9,8 @@ interface User {
     token: string;
   };
   localData?: {
-    profileImage: string;
+    profileImage: string | any;
+    name: string;
   };
 }
 
@@ -31,8 +32,12 @@ export const userSlice = createSlice({
       state.apiData = action.payload.apiData;
       useLocalStorage.setItem(userInfo.userApiData, action.payload.apiData);
     },
+    setUserLocalData: (state, action: PayloadAction<Pick<User, "localData">>) => {
+      state.localData = action.payload.localData;
+      useLocalStorage.setItem(userInfo.userLocalData, action.payload.localData)
+    }
   },
 });
 
-export const { setUserApiData } = userSlice.actions;
+export const { setUserApiData, setUserLocalData } = userSlice.actions;
 export const userReducer = userSlice.reducer;

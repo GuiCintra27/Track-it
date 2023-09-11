@@ -8,7 +8,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export function FormInput({ name,...rest }: FormInputProps) {
   const { register } = useFormContext();
-  return <Input {...rest} {...register(name)} />;
+  return <Input {...register(name)}  {...rest} />;
 }
 
 const Input = styled.input`
@@ -27,9 +27,5 @@ const Input = styled.input`
   &::placeholder {
     font-size: 2rem;
     color: var(--placeholder);
-  }
-
-  &.hidden {
-    display: none;
   }
 `;

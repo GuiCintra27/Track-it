@@ -1,5 +1,5 @@
 import { SignInData, SignUpData } from "@/lib/types/auth";
-import { setUserApiData } from "../storage/user-slice";
+import { setUserApiData, setUserLocalData } from "../storage/user-slice";
 
 interface HandleFormProps {
   data: SignUpData | SignInData;
@@ -53,7 +53,7 @@ export async function handleSignInForm({
   try {
     await signIn({ ...data });
 
-    dispatch(
+    await dispatch(
       setUserApiData({
         apiData: {
           id: signInData.id,
@@ -61,6 +61,12 @@ export async function handleSignInForm({
           image: signInData.image,
           token: signInData.token,
         },
+      }),
+      setUserLocalData({
+        localData: {
+          name: signInData.name,
+          profileImage: signInData.image,
+        }
       })
     );
     

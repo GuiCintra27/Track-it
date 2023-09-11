@@ -27,8 +27,4 @@ const Input = styled.input`
     font-size: 2rem;
     color: var(--placeholder);
   }
-
-  &.hidden {
-    display: none;
-  }
 `;

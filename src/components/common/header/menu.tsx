@@ -40,6 +40,7 @@ const Container = styled.div`
   flex-direction: column;
 
   position: absolute;
+  z-index: 1;
   bottom: .5rem;
   right: .5rem;
   
