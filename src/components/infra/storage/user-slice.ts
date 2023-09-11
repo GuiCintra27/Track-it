@@ -14,7 +14,7 @@ interface User {
   };
 }
 
-const userInfo = {
+export const userInfo = {
   userApiData: "userApiData",
   userLocalData: "userLocalData"
 }

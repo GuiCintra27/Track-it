@@ -1,3 +1,4 @@
+import { useLogout } from "@/hooks/useLogout";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -5,17 +6,20 @@ const menuList = [
   {
     icon: 'user-icon.svg',
     name: "Perfil",
-    url: "/profile"
+    url: "/profile",
+    function: () => {}
   },
   {
     icon: 'settings-icon.svg',
     name: "Configurações",
-    url: "/settings"
+    url: "/settings",
+    function: () => {}
   },
   {
     icon: 'logout-icon.svg',
     name: "Sair",
-    url: ""
+    url: "",
+    function: useLogout
   },
 ];
 
@@ -24,7 +28,7 @@ export function Menu() {
     <Container>
       {menuList.map((item, index) => (
         <div key={index}>
-          <Link href={item.url} className="content">
+          <Link href={item.url} onClick={item.function} className="content">
             <img src={`/icons/${item.icon}`} alt={item.name} />
             <p>{item.name}</p>
           </Link>

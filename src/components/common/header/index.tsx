@@ -28,7 +28,7 @@ export function Header() {
       </Link>
 
       <img
-        src={profileImage ? profileImage : "/undefined-user.png"}
+        src={profileImage}
         alt="User Profile Image"
         className="profile-image"
         onClick={() => setToggleMenu(!toggleMenu)}
