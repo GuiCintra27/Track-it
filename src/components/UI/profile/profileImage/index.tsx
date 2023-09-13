@@ -16,13 +16,13 @@ export function ProfileImage({ profileImage, name }: ProfileImageProps) {
           alt="Foto de perfil do usuário"
           className="profile-image"
         />
-        <Form.Label name={name}>
+        <Form.ProfileImageLabel name={name}>
           <img
             src="/icons/edit-pencil-icon.svg"
             alt="Alterar imagem de usuário"
             className="edit-profile-image"
           />
-        </Form.Label>
+        </Form.ProfileImageLabel>
       </div>
     </Container>
   );

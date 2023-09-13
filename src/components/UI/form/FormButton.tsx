@@ -54,4 +54,8 @@ const Button = styled.button`
     background: #fff;
     color: var(--ligth-blue);
   }
+
+  &.margin-top{
+    margin-top: 3rem;
+  }
 `;

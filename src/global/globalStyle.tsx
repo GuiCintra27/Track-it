@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --green: #8fc549;
     --dark-blue: #126ba5;
+    --blue: #0081CC;
     --light-blue: #52b6ff;
     --dark-gray: #666666;
     --default-subtitle: #bababa;

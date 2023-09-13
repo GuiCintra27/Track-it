@@ -1,20 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { redirect } from "next/navigation";
-import { Form } from "@/components/UI/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ChangeProfileData } from "@/lib/types/profile-data";
-import { changeProfileDataSchema } from "@/lib/validations/change-profile-data-schema";
+import { useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
+import { Form } from "@/components/UI/form";
 import { Title } from "../../components/UI/title";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { Header } from "../../components/common/header";
+import { ChangeProfileData } from "@/lib/types/profile-data";
+import { errorToast, successToast } from "@/components/UI/alerts";
+import { ProfileImage } from "@/components/UI/profile/profileImage";
 import { AppLayout } from "../../components/common/layouts/appLayout";
 import { handleChangeProfileForm } from "@/components/infra/fetch-logic/profile";
-import { ProfileImage } from "@/components/UI/profile/profileImage";
-import { errorToast, successToast } from "@/components/UI/alerts";
+import { changeProfileDataSchema } from "@/lib/validations/change-profile-data-schema";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -93,7 +93,7 @@ export default function Profile() {
               <Form.Input type="text" name="name" placeholder="Novo nome" />
               <Form.Error field="name" />
 
-              <Form.Button type="submit">Salvar Mudanças</Form.Button>
+              <Form.Button className="margin-top" type="submit">Salvar Mudanças</Form.Button>
             </Form.Root>
           </FormProvider>
         </div>

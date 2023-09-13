@@ -1,14 +1,31 @@
-import { LabelHTMLAttributes, ReactNode, useRef } from "react";
+import { LabelHTMLAttributes } from "react";
+import styled from "styled-components";
 
 interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  name: string;
-  children: ReactNode;
+  text: string;
+  imagePath?: string;
 }
 
-export function FormLabel({ name, children, ...rest }: FormLabelProps) {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleClick = () => fileInputRef.current?.click();
-
-  return <label htmlFor={name} onClick={handleClick} {...rest}>{children}</label>;
+export function FormLabel({ text, imagePath, ...rest }: FormLabelProps) {
+  return (
+    <Container {...rest}>
+      {imagePath && <img src={imagePath} alt={text} />}
+      <p>{text}</p>
+    </Container>
+  );
 }
+
+const Container = styled.label`
+  width: 100%;
+
+  display: flex;
+  gap: 1.3rem;
+
+  font-size: 2.5rem;
+  color: var(--dark-gray);
+
+  img {
+    width: 2.5rem;
+    aspect-ratio: 4/4;
+  }
+`;
