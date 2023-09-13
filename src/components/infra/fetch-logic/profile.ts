@@ -25,7 +25,6 @@ export async function handleChangeProfileForm({
   successToast,
   errorToast,
 }: HandleFormProps) {
-  console.log(data.name, localData?.name, apiData)
   try {
     let profileImage = data.profileImage[0];
 
