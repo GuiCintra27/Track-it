@@ -67,6 +67,7 @@ export default function Home() {
               onChange={(e) => setHabitName(e.target.value)}
               value={habitName}
               disabled={habitsLoading}
+              placeholder="nome do hábito"
             />
             <Habit.DaysBox
               habitDays={habitDays}

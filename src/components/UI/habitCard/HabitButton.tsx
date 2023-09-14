@@ -8,18 +8,22 @@ interface HabitButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function HabitButton({ submit, children, ...rest }: HabitButtonProps) {
-  return <Button {...rest}>{submit && rest.disabled ? (
-    <ThreeDots
-      height="100%"
-      width="50"
-      radius="10"
-      color="#ffffff"
-      ariaLabel="three-dots-loading"
-      visible={true}
-    />
-  ) : (
-    children
-  )}</Button>;
+  return (
+    <Button {...rest}>
+      {submit && rest.disabled ? (
+        <ThreeDots
+          height="100%"
+          width="50"
+          radius="10"
+          color="#ffffff"
+          ariaLabel="three-dots-loading"
+          visible={true}
+        />
+      ) : (
+        children
+      )}
+    </Button>
+  );
 }
 
 const Button = styled.button`
@@ -39,10 +43,10 @@ const Button = styled.button`
 
   &.white {
     color: var(--light-blue);
-    background: #fff;
+    background: var(--light);
   }
 
-  &:active{
-    filter: brightness(.9);
+  &:active {
+    filter: brightness(0.9);
   }
 `;

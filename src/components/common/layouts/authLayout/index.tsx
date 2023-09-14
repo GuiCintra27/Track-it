@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
-  return <Main>{children}</Main>;
+  return <Main data-theme={''}>{children}</Main>;
 }
 
 export const Main = styled.main`
@@ -14,7 +14,7 @@ export const Main = styled.main`
   justify-content: center;
   align-items: center;
 
-  background-color: #fff;
+  background-color: var(--auth-bg);
 
   padding-inline: 3.6rem;
 
@@ -23,6 +23,8 @@ export const Main = styled.main`
     width: 18rem;
 
     margin-bottom: 3.2rem;
+
+    filter: brightness(var(--auth-brightness));
   }
 
   form {

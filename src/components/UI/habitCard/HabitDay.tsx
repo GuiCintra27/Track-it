@@ -56,6 +56,6 @@ const Container = styled.div<{ loading: number }>`
 
   &.selected {
     background-color: var(--medium-gray);
-    color: #fff;
+    color: var(--light);;
   }
 `;

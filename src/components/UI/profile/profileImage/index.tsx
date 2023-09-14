@@ -58,6 +58,9 @@ const Container = styled.div`
       position: absolute;
       top: 0;
       right: 0;
+
+      filter:  brightness(var(--brightness)) invert(var(--invert));
+
       cursor: pointer;
     }
   }

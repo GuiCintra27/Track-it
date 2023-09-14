@@ -23,7 +23,7 @@ const Container = styled.div<{margin_bottom: string | undefined}>`
 
   border-radius: 5px;
 
-  background-color: #fff;
+  background-color: var(--light);;
 
   &.flex-direction-row {
     flex-direction: row;

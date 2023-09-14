@@ -82,7 +82,7 @@ const Container = styled.div`
 
     p {
       font-size: 1.3rem;
-      color: var(--dark-gray);
+      color: #666666;
     }
 
     &:active{

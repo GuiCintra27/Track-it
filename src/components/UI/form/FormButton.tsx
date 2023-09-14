@@ -51,7 +51,7 @@ const Button = styled.button`
   }
 
   &.white {
-    background: #fff;
+    background: var(--light);
     color: var(--ligth-blue);
   }
 

@@ -19,7 +19,7 @@ const Input = styled.input`
 
   border-radius: 0.5rem;
   border: 1px solid var(--stroke);
-  background: #fff;
+  background: var(--light);;
 
   font-size: 2rem;
   color: var(--dark-gray);

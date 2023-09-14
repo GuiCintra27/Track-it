@@ -32,7 +32,7 @@ const Select = styled.select`
 
   border-radius: 0.5rem;
   border: 2px solid var(--blue);
-  background: #fff;
+  background: var(--light);;
 
   font-size: 1.5rem;
   color: var(--dark-gray);

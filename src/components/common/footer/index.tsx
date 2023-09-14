@@ -48,7 +48,7 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
 
-  background-color: #fff;
+  background-color: var(--light);
   color: var(--light-blue);
 
   a {

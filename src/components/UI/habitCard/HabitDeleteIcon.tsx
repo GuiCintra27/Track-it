@@ -19,5 +19,7 @@ const Icon = styled.div`
   img {
     width: 1.3rem;
     height: 1.5rem;
+
+    filter: grayscale(var(--gray-scale));
   }
 `;

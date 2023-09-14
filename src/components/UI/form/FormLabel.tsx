@@ -27,5 +27,7 @@ const Container = styled.label`
   img {
     width: 2.5rem;
     aspect-ratio: 4/4;
+
+    filter:  brightness(var(--brightness)) invert(var(--invert));
   }
 `;

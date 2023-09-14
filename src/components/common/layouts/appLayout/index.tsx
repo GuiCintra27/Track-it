@@ -2,7 +2,7 @@
 import { styled } from "styled-components";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
-  return <Main>{children}</Main>;
+  return <Main data-theme={''}>{children}</Main>;
 }
 
 const Main = styled.main`
