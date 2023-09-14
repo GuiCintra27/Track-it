@@ -11,7 +11,7 @@ export function FormSelect({ name, optionsList, ...rest }: FormSelectProps) {
   const { register } = useFormContext();
   return (
     <Select {...register(name)} {...rest}>
-      <option value="" disabled unselectable="on">
+      <option value="" disabled={true} unselectable="on">
         Selecionar
       </option>
 

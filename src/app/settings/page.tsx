@@ -1,21 +1,25 @@
 "use client";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { redirect } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { Form } from "@/components/UI/form";
 import { Title } from "../../components/UI/title";
 import { SettingsData } from "@/lib/types/settings";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { Header } from "../../components/common/header";
 import { settingsSchema } from "@/lib/validations/settings-schema";
 import { AppLayout } from "../../components/common/layouts/appLayout";
+import { handleSettingsForm } from "@/components/infra/fetch-logic/settings";
 
 export default function Profile() {
-  const { apiData, localData } = useAppSelector((state) => state.user);
+  const { apiData } = useAppSelector((state) => state.user);
+  const { settings } = useAppSelector((state) => state.settings);
+  const dispatch = useDispatch();
 
-  const formProps = {};
+  const formProps = { dispatch, settings };
 
   const themeList = [
     {
@@ -41,10 +45,6 @@ export default function Profile() {
 
   const settingsForm = useForm<SettingsData>({
     resolver: zodResolver(settingsSchema),
-    defaultValues: {
-      theme: "",
-      language: "",
-    },
   });
 
   const { handleSubmit } = settingsForm;
@@ -66,7 +66,7 @@ export default function Profile() {
           <FormProvider {...settingsForm}>
             <Form.Root
               onSubmit={handleSubmit((data) => {
-                console.log(data);
+                handleSettingsForm({ data, ...formProps });
               })}
             >
               <Form.Label text="Tema" imagePath="/icons/theme-icon.svg" />

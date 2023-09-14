@@ -1,8 +1,17 @@
-import React from "react";
 import { styled } from "styled-components";
+import React, { useEffect, useState } from "react";
+
+import { useAppSelector } from "@/hooks/useAppSelector";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
-  return <Main data-theme={''}>{children}</Main>;
+  const {settings} = useAppSelector((state) => state.settings)
+  const [theme, setTheme] = useState("")
+
+  useEffect(() => {
+    setTheme(settings.theme)
+  }, [settings.theme])
+  
+  return <Main data-theme={theme}>{children}</Main>;
 }
 
 export const Main = styled.main`

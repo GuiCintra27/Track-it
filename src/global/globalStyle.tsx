@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   [data-theme="dark"]{
-    transition: 1s;
     --green: #8fc549;
     --dark-blue: #5AB5F0;
     --blue: #0081CC;
