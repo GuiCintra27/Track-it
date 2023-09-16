@@ -3,17 +3,22 @@ import { styled } from "styled-components";
 
 interface TitleSubtitleProps extends HtmlHTMLAttributes<HTMLHeadingElement> {
   progress?: number;
+  habitsText: string;
+  noHabitsText: string;
 }
 
-export function TitleSubtitle({ progress, ...rest }: TitleSubtitleProps) {
+export function TitleSubtitle({
+  progress,
+  habitsText,
+  noHabitsText,
+  ...rest
+}: TitleSubtitleProps) {
   return (
     <StyledSubtitle
       className={progress && progress > 0 ? "green" : ""}
       {...rest}
     >
-      {progress && progress > 0
-        ? `${progress}% dos hábitos concluídos`
-        : "Nenhum hábito concluído ainda"}
+      {progress && progress > 0 ? `${progress}% ${habitsText}` : noHabitsText}
     </StyledSubtitle>
   );
 }

@@ -2,6 +2,7 @@
 import { useDispatch } from "react-redux";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { Form } from "@/components/UI/form";
@@ -17,6 +18,7 @@ import { handleChangeProfileForm } from "@/components/infra/fetch-logic/profile"
 import { changeProfileDataSchema } from "@/lib/validations/change-profile-data-schema";
 
 export default function Profile() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { apiData, localData } = useAppSelector((state) => state.user);
   const [name, setName] = useState("User");
@@ -69,7 +71,7 @@ export default function Profile() {
 
       <div className="container">
         <Title.Root className="display-block">
-          <Title.Title text={`Olá ${name},`} />
+          <Title.Title text={`${t("profile.hello")} ${name},`} />
         </Title.Root>
 
         <div className="margin-inline">
@@ -90,10 +92,16 @@ export default function Profile() {
               />
               <Form.Error field="profileImage" />
 
-              <Form.Input type="text" name="name" placeholder="Novo nome" />
+              <Form.Input
+                type="text"
+                name="name"
+                placeholder={t("profile.new-name")}
+              />
               <Form.Error field="name" />
 
-              <Form.Button className="margin-top" type="submit">Salvar Mudanças</Form.Button>
+              <Form.Button className="margin-top" type="submit">
+                {t("profile.save-changes")}
+              </Form.Button>
             </Form.Root>
           </FormProvider>
         </div>

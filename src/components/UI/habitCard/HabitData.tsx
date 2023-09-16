@@ -4,16 +4,17 @@ import { styled } from "styled-components";
 interface HabitDataProps {
   text: string;
   validation: boolean;
+  dayText: string;
   days: number;
 }
 
-export function HabitData({ text, validation, days }: HabitDataProps) {
+export function HabitData({ text, validation, dayText, days }: HabitDataProps) {
   return (
     <Data>
       {text}{" "}
       <span className={validation ? "green" : ""}>
         {days}
-        {days > 1 ? " Dias" : " Dia"}
+        {days > 1 ? `${dayText}s` : dayText}
       </span>
     </Data>
   );

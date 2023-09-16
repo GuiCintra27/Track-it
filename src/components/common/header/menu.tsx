@@ -1,29 +1,32 @@
-import { useLogout } from "@/hooks/useLogout";
 import Link from "next/link";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
-const menuList = [
-  {
-    icon: 'user-icon.svg',
-    name: "Perfil",
-    url: "/profile",
-    function: () => {}
-  },
-  {
-    icon: 'settings-icon.svg',
-    name: "Configurações",
-    url: "/settings",
-    function: () => {}
-  },
-  {
-    icon: 'logout-icon.svg',
-    name: "Sair",
-    url: "",
-    function: useLogout
-  },
-];
+import { useLogout } from "@/hooks/useLogout";
 
 export function Menu() {
+  const {t} = useTranslation();
+  
+  const menuList = [
+    {
+      icon: 'user-icon.svg',
+      name: t("header.profile"),
+      url: "/profile",
+      function: () => {}
+    },
+    {
+      icon: 'settings-icon.svg',
+      name: t("header.settings"),
+      url: "/settings",
+      function: () => {}
+    },
+    {
+      icon: 'logout-icon.svg',
+      name: t("header.log-out"),
+      url: "",
+      function: useLogout
+    },
+  ];
   return (
     <Container>
       {menuList.map((item, index) => (
@@ -40,6 +43,8 @@ export function Menu() {
 }
 
 const Container = styled.div`
+  min-width: 12.75rem;
+
   display: flex;
   flex-direction: column;
 

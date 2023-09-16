@@ -1,0 +1,63 @@
+{
+  "translation": {
+    "form": {
+      "select": {
+        "default-option": "Select"
+      }
+    },
+    "alerts": {
+      "confirm-alert": "Are you sure?-This is an irreversible action",
+      "confirm-button": "Continue",
+      "cancel-button": "Cancel"
+    },
+    "header": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "log-out": "Log out"
+    },
+    "footer": {
+      "habits": "Habits",
+      "progress-bar": "Today",
+      "history": "History"
+    },
+    "home": {
+      "sign-in-error": "It looks like there was an error loading the habits, try reloading the page :)",
+      "title": "My habits",
+      "habit-name": "habit name",
+      "create-habit-cancel-button": "Cancel",
+      "create-habit-save-button": "Save",
+      "has-no-habit-subtitle": "You don't have any habits registered yet. Add a habit to start tracking!",
+      "week-days": "SMTWTFS"
+    },
+    "profile": {
+      "hello": "Hello",
+      "new-name": "New name",
+      "save-changes": "Save Changes"
+    },
+    "settings": {
+      "title": "Settings",
+      "theme": {
+        "title": "Theme",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "language": {
+        "title": "Language",
+        "en": "English",
+        "pt": "Portuguese"
+      },
+      "save-changes": "Save Changes"
+    },
+    "today": {
+      "date-format": "en",
+      "title": "Sunday/Monday/Tuesday/Wednesday/Thursday/Friday/Saturday",
+      "subtitle": {
+        "habits": "of completed habits",
+        "no-habits": "No habits completed yet"
+      },
+      "sequence": "Current sequence:",
+      "record": "Your record: ",
+      "day": " Day"
+    }
+  }
+}

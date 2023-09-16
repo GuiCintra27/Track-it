@@ -1,0 +1,63 @@
+{
+  "translation": {
+    "form": {
+      "select": {
+        "default-option": "Selecionar"
+      }
+    },
+    "alerts": {
+      "confirm-alert": "Você tem certeza?-Esta é uma ação irreversível",
+      "confirm-button": "Continuar",
+      "cancel-button": "Cancelar"
+    },
+    "header": {
+      "profile": "Perfil",
+      "settings": "Configurações",
+      "log-out": "Sair"
+    },
+    "footer": {
+      "habits": "Hábitos",
+      "progress-bar": "Hoje",
+      "history": "Histórico"
+    },
+    "home": {
+      "sign-in-error": "Parece que houve um erro ao carregar os hábitos, tente recarregar a página :)",
+      "title": "Meus hábitos",
+      "habit-name": "nome do hábito",
+      "create-habit-cancel-button": "Cancelar",
+      "create-habit-save-button": "Salvar",
+      "has-no-habit-subtitle": "Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!",
+      "week-days": "DSTQQSS"
+    },
+    "profile": {
+      "hello": "Olá",
+      "new-name": "Novo nome",
+      "save-changes": "Salvar Mudanças"
+    },
+    "settings": {
+      "title": "Configurações",
+      "theme": {
+        "title": "Tema",
+        "light": "Claro",
+        "dark": "Escuro"
+      },
+      "language": {
+        "title": "Idioma",
+        "en": "Inglês",
+        "pt": "Português"
+      },
+      "save-changes": "Salvar Mudanças"
+    },
+    "today": {
+      "date-format": "pt",
+      "title": "Domingo/Segunda-feira/Terça-feira/Quarta-feira/Quinta-feira/Sexta-feira/Sábado",
+      "subtitle": {
+        "habits": "dos hábitos concluídos",
+        "no-habits": "Nenhum hábito concluído ainda"
+      },
+      "sequence": "Sequencia atual:",
+      "record": "Seu recorde: ",
+      "day": " Dia"
+    }
+  }
+}

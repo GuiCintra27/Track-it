@@ -37,7 +37,11 @@ export const warningToast = (text: string) => {
   });
 };
 
-export const confirmAlert = (title: string, text: string) =>
+export const confirmAlert = (
+  title: string,
+  text: string,
+  buttonsText: { confirm: string; cancel: string }
+) =>
   Swal.fire({
     title: title,
     text: text,
@@ -45,6 +49,6 @@ export const confirmAlert = (title: string, text: string) =>
     showCancelButton: true,
     confirmButtonColor: "#126ba5",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Continuar",
-    cancelButtonText: "Cancelar",
+    confirmButtonText: buttonsText.confirm,
+    cancelButtonText: buttonsText.cancel,
   });

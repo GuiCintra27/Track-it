@@ -5,14 +5,15 @@ import { styled } from "styled-components";
 
 interface CircularProgressBarProps {
   percentage: number;
+  text: string
 }
 
-export function ProgressBar({ percentage }: CircularProgressBarProps) {
+export function ProgressBar({ percentage, text }: CircularProgressBarProps) {
   return (
     <Box>
       <CircularProgressbar
         value={percentage}
-        text={"Hoje"}
+        text={text}
         styles={buildStyles({
           textColor: "#fff",
           pathColor: "#fff",

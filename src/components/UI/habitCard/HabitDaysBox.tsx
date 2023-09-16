@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Dispatch, SetStateAction } from "react";
 
 import { HabitDay } from "./HabitDay";
-import { Dispatch, SetStateAction } from "react";
 
 interface HabitDaysBoxProps {
   editable: boolean;
@@ -10,7 +11,6 @@ interface HabitDaysBoxProps {
   loading?: boolean;
 }
 
-const weekDays = ["D", "S", "T", "Q", "Q", "S", "S"];
 
 export function HabitDaysBox({
   habitDays,
@@ -18,6 +18,9 @@ export function HabitDaysBox({
   editable,
   loading,
 }: HabitDaysBoxProps) {
+  const {t} = useTranslation();
+
+  const weekDays = t("home.week-days").split("");
   return (
     <Container>
       {weekDays.map((item, index) => (

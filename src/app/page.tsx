@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Title } from "../components/UI/title";
 import { useHabitsApi } from "@/hooks/api/habits";
@@ -19,6 +20,7 @@ import {
 } from "@/components/infra/fetch-logic/habits";
 
 export default function Home() {
+  const { t } = useTranslation();
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
   const [habitDays, setHabitDays] = useState<number[]>([]);
@@ -43,10 +45,7 @@ export default function Home() {
     setToggleCreateCard(false);
   }
 
-  if (habitsError)
-    errorToast(
-      "Parece que houve um erro ao carregar os hábitos, tente recarregar a página :)"
-    );
+  if (habitsError) errorToast(t("home.sign-in-error"));
 
   return (
     <AppLayout>
@@ -54,7 +53,7 @@ export default function Home() {
 
       <div className="container">
         <Title.Root>
-          <Title.Title text="Meus hábitos" />
+          <Title.Title text={t("home.title")} />
           <Title.AddHabitButton
             onClick={() => setToggleCreateCard(!toggleCreateCard)}
           />
@@ -67,7 +66,7 @@ export default function Home() {
               onChange={(e) => setHabitName(e.target.value)}
               value={habitName}
               disabled={habitsLoading}
-              placeholder="nome do hábito"
+              placeholder={t("home.habit-name")}
             />
             <Habit.DaysBox
               habitDays={habitDays}
@@ -77,14 +76,14 @@ export default function Home() {
             />
             <Habit.Actions>
               <Habit.Button className="white" onClick={resetInputData}>
-                Cancelar
+                {t("home.create-habit-cancel-button")}
               </Habit.Button>
               <Habit.Button
                 submit={true}
                 onClick={() => handleCreateHabit(createHabitProps)}
                 disabled={habitsLoading}
               >
-                Salvar
+                {t("home.create-habit-save-button")}
               </Habit.Button>
             </Habit.Actions>
           </Habit.Root>
@@ -100,7 +99,7 @@ export default function Home() {
                   <Habit.Title text={name} />
                   <Habit.DeleteIcon
                     onClick={() =>
-                      handleDeleteHabit({ id, deleteHabit, confirmAlert })
+                      handleDeleteHabit({ id, deleteHabit, confirmAlert, t })
                     }
                   />
                 </Habit.Header>
@@ -110,8 +109,7 @@ export default function Home() {
           )
         ) : (
           <h3 className="has-no-habits-subtitle">
-            Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
-            começar a trackear!
+            {t("home.has-no-habits-subtitle")}
           </h3>
         )}
       </div>

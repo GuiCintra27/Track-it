@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { styled } from "styled-components";
+import { useTranslation } from "react-i18next";
 import { ProgressBar } from "./circularProgressBar";
 
 import { useTodayHabitsApi } from "@/hooks/api/today";
@@ -11,6 +12,7 @@ import { useAppSelector } from "@/hooks/useAppSelector";
 import { setTodayHabits } from "@/components/infra/storage/habits-slice";
 
 export function Footer() {
+  const { t } = useTranslation();
   const { todayHabits, isFetching } = useTodayHabitsApi();
   const progress = useAppSelector((state) => state.todayHabits.progress);
   const dispatch = useDispatch();
@@ -26,11 +28,11 @@ export function Footer() {
   
   return (
     <StyledFooter>
-      <Link href={"/"}>Hábitos</Link>
+      <Link href={"/"}>{t("footer.habits")}</Link>
       <Link href={"/today"}>
-        <ProgressBar percentage={progress ? progress : 0} />
+        <ProgressBar percentage={progress ? progress : 0} text={t("footer.progress-bar")} />
       </Link>
-      <Link href={"/history"}>Histórico</Link>
+      <Link href={"/history"}>{t("footer.history")}</Link>
     </StyledFooter>
   );
 }

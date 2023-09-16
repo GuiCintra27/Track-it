@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 import { Title } from "../../components/UI/title";
 import { Habit } from "../../components/UI/habitCard";
@@ -17,6 +18,7 @@ import {
 } from "@/components/infra/fetch-logic/todayHabits";
 
 export default function Today() {
+  const { t } = useTranslation();
   const { checkHabit, uncheckHabit } = useTodayHabitsApi();
   const todayHabits = useAppSelector((state) => state.todayHabits);
   const userApiData = useAppSelector((state) => state.user.apiData);
@@ -37,7 +39,11 @@ export default function Today() {
       <div className="container">
         <Title.Root className="display-block">
           <Title.Title />
-          <Title.Subtitle progress={todayHabits.progress} />
+          <Title.Subtitle
+            progress={todayHabits.progress}
+            habitsText={t("today.subtitle.habits")}
+            noHabitsText={t("today.subtitle.no-habits")}
+          />
         </Title.Root>
 
         {todayHabits.loading ? (
@@ -61,12 +67,14 @@ export default function Today() {
                     <Habit.Title text={name} />
                   </Habit.Header>
                   <Habit.Data
-                    text="Sequência atual:"
+                    text={t("today.sequence")}
+                    dayText={t("today.day")}
                     validation={done}
                     days={currentSequence}
                   />
                   <Habit.Data
-                    text="Seu recorde:"
+                    text={t("today.record")}
+                    dayText={t("today.day")}
                     validation={
                       currentSequence === highestSequence &&
                       highestSequence !== 0
