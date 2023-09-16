@@ -23,17 +23,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  if (typeof window !== "undefined" && typeof navigator !== "undefined") {
-    useEffect(() => {
-      const storageSettings = window.localStorage.getItem("settings");
+  useEffect(() => {
+    const storageSettings = window.localStorage.getItem("settings");
 
-      if (storageSettings) {
-        const settings = JSON.parse(storageSettings);
-        i18n.changeLanguage(settings.language);
-      } else i18n.changeLanguage(navigator.language);
-    }, [window, navigator]);
-  }
-  
+    if (storageSettings) {
+      const settings = JSON.parse(storageSettings);
+      i18n.changeLanguage(settings.language);
+    } else i18n.changeLanguage(navigator.language);
+  }, []);
+
   return (
     <html lang="pt-br" suppressHydrationWarning={true}>
       <body className={lexendDeca.className}>
