@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -15,6 +16,7 @@ import { handleSignUpForm } from "@/components/infra/fetch-logic/auth";
 import { AuthLayout } from "../../components/common/layouts/authLayout";
 
 export default function SignUp() {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const { signInData, signIn, signUp } = useAuthApi();
   const router = useRouter();
@@ -53,22 +55,22 @@ export default function SignUp() {
             handleSignUpForm({ data, ...signUpFormProps })
           )}
         >
-          <Form.Input name="name" type="text" placeholder="nome" />
+          <Form.Input name="name" type="text" placeholder={t("auth.name")} />
           <Form.Error field="name" />
 
-          <Form.Input name="email" type="email" placeholder="email" />
+          <Form.Input name="email" type="email" placeholder={t("auth.email")} />
           <Form.Error field="email" />
 
-          <Form.Input name="password" type="password" placeholder="senha" />
+          <Form.Input name="password" type="password" placeholder={t("auth.password")} />
           <Form.Error field="password" />
 
           <Form.Button disabled={isSubmitting} type="submit">
-            Cadastrar
+          {t("auth.sign-up")}
           </Form.Button>
         </Form.Root>
       </FormProvider>
 
-      <Link href={"/sign-in"}>Já tem uma conta? Faça login!</Link>
+      <Link href={"/sign-in"}>{t("auth.have-account")}</Link>
     </AuthLayout>
   );
 }

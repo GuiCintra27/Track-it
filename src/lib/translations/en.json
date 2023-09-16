@@ -20,6 +20,15 @@
       "progress-bar": "Today",
       "history": "History"
     },
+    "auth": {
+      "name": "name",
+      "email": "email",
+      "password": "password",
+      "sign-in": "Log in",
+      "sign-up": "Sign up",
+      "create-account": "Don't have an account? Sign up!",
+      "have-account": "Already have an account? Log in!"
+    },
     "home": {
       "sign-in-error": "It looks like there was an error loading the habits, try reloading the page :)",
       "title": "My habits",

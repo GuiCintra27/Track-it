@@ -1,15 +1,15 @@
 "use client";
 
 import { Provider } from "react-redux";
+import { useEffect } from "react";
 import { Lexend_Deca } from "next/font/google";
+import { I18nextProvider } from "react-i18next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import i18n from "@/lib/i18n";
 import { store } from "@/global/store";
 import GlobalStyle from "@/global/globalStyle";
 import StyledComponentsRegistry from "../lib/registry";
-import { useEffect } from "react";
-import { I18nextProvider } from "react-i18next";
 
 const lexendDeca = Lexend_Deca({
   weight: ["400", "500", "600", "700"],

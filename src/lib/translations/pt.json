@@ -20,6 +20,15 @@
       "progress-bar": "Hoje",
       "history": "Histórico"
     },
+    "auth": {
+      "name": "nome",
+      "email": "email",
+      "password": "senha",
+      "sign-in": "Entrar",
+      "sign-up": "Cadastrar",
+      "create-account": "Não tem uma conta? Cadastre-se!",
+      "have-account": "Já tem uma conta? Faça login!"
+    },
     "home": {
       "sign-in-error": "Parece que houve um erro ao carregar os hábitos, tente recarregar a página :)",
       "title": "Meus hábitos",
