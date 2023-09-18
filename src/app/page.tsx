@@ -24,8 +24,13 @@ export default function Home() {
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
   const [habitDays, setHabitDays] = useState<number[]>([]);
-  const { habits, habitsLoading, createHabit, deleteHabit, habitsError } =
-    useHabitsApi();
+  const {
+    habits,
+    habitsLoading,
+    createHabit,
+    deleteHabit,
+    habitsError,
+  } = useHabitsApi();
   const userApiData = useAppSelector((state) => state.user.apiData);
 
   useEffect(() => {
@@ -37,7 +42,10 @@ export default function Home() {
     createHabit,
     errorToast,
     resetInputData,
+    t,
   };
+
+  const deleteHabitProps = { deleteHabit, confirmAlert, t };
 
   function resetInputData() {
     setHabitName("");
@@ -98,9 +106,7 @@ export default function Home() {
                 <Habit.Header>
                   <Habit.Title text={name} />
                   <Habit.DeleteIcon
-                    onClick={() =>
-                      handleDeleteHabit({ id, deleteHabit, confirmAlert, t })
-                    }
+                    onClick={() => handleDeleteHabit({id, ...deleteHabitProps})}
                   />
                 </Habit.Header>
                 <Habit.DaysBox habitDays={days} editable={false} />

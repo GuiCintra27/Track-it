@@ -1,6 +1,8 @@
-import { ChangeProfileData } from "@/lib/types/profile-data";
-import { setUserLocalData } from "../storage/user-slice";
+import { TFunction } from "i18next";
 import { AnyAction, Dispatch } from "redux";
+
+import { setUserLocalData } from "../storage/user-slice";
+import { ChangeProfileData } from "@/lib/types/profile-data";
 
 interface HandleFormProps {
   data: ChangeProfileData;
@@ -15,6 +17,7 @@ interface HandleFormProps {
   };
   successToast: any;
   errorToast: any;
+  t: TFunction<"translation", undefined>;
 }
 
 export async function handleChangeProfileForm({
@@ -24,6 +27,7 @@ export async function handleChangeProfileForm({
   apiData,
   successToast,
   errorToast,
+  t
 }: HandleFormProps) {
   try {
     let profileImage = data.profileImage[0];
@@ -50,10 +54,9 @@ export async function handleChangeProfileForm({
       })
     );
 
-    successToast("Mudanças feitas com sucesso!");
-  } catch (error) {
-    console.log(error);
-    errorToast("Oops... Parece que houve algum erro");
+    successToast(t("alerts.successful-changes"));
+  } catch {
+    errorToast(t("error"));
   }
 }
 

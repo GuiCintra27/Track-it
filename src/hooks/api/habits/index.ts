@@ -33,6 +33,6 @@ export function useHabitsApi() {
     habitsLoading,
     habitsError,
     createHabit,
-    deleteHabit,
+    deleteHabit
   };
 }

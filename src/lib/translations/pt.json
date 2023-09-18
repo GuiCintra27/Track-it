@@ -8,7 +8,15 @@
     "alerts": {
       "confirm-alert": "Você tem certeza?-Esta é uma ação irreversível",
       "confirm-button": "Continuar",
-      "cancel-button": "Cancelar"
+      "cancel-button": "Cancelar",
+      "invalid-credentials": "Email ou senha inválidos!",
+      "server-error": "Houve um erro ao conectar com o servidor",
+      "log-in": "Login realizado!",
+      "conflict": "Email ou nome de usuário já está em uso",
+      "error": "Oops, parece que houve um erro...",
+      "successful-deletion": "Hábito deletado com sucesso",
+      "successful-changes": "Mudanças feitas com sucesso!",
+      "reload-page": "oops... Recarregue página por favor"
     },
     "header": {
       "profile": "Perfil",
@@ -35,7 +43,7 @@
       "habit-name": "nome do hábito",
       "create-habit-cancel-button": "Cancelar",
       "create-habit-save-button": "Salvar",
-      "has-no-habit-subtitle": "Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!",
+      "has-no-habits-subtitle": "Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!",
       "week-days": "DSTQQSS"
     },
     "profile": {

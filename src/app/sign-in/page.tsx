@@ -18,7 +18,7 @@ import { AuthLayout } from "../../components/common/layouts/authLayout";
 export default function SignIn() {
   const {t} = useTranslation();
   const dispatch = useDispatch();
-  const { signInData, signIn } = useAuthApi();
+  const { signInData, signIn, signInError } = useAuthApi();
   const router = useRouter();
 
   const signInForm = useForm<SignInData>({
@@ -41,6 +41,8 @@ export default function SignIn() {
     successToast,
     errorToast,
     router,
+    signInError,
+    t
   };
 
   return (

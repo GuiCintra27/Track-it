@@ -17,6 +17,7 @@ interface HandleCreateHabitProps {
   >;
   errorToast: (text: string) => void;
   resetInputData: () => void;
+  t: TFunction<"translation", undefined>;
 }
 
 export async function handleCreateHabit({
@@ -24,6 +25,7 @@ export async function handleCreateHabit({
   createHabit,
   resetInputData,
   errorToast,
+  t,
 }: HandleCreateHabitProps) {
   try {
     const validation = createHabitSchema.safeParse(data);
@@ -35,37 +37,41 @@ export async function handleCreateHabit({
       if (errors.name) errorToast(errors.name._errors[0]);
       else if (errors.days) errorToast(errors.days._errors[0]);
     }
-  } catch (error) {
-    errorToast("Oops, parece que houve um erro...");
-    throw error;
+  } catch {
+    errorToast(t("alerts.error"));
   }
 }
 
 interface handleDeleteHabitProps {
   id: number;
   deleteHabit: UseMutateFunction<void, unknown, number, unknown>;
-  confirmAlert: (title: string, text: string, buttonsText: { confirm: string, cancel: string }) => Promise<SweetAlertResult<any>>;
-  t: TFunction<"translation", undefined>
+  confirmAlert: (
+    title: string,
+    text: string,
+    buttonsText: { confirm: string; cancel: string }
+  ) => Promise<SweetAlertResult<any>>;
+  t: TFunction<"translation", undefined>;
 }
 
 export function handleDeleteHabit({
   id,
   deleteHabit,
   confirmAlert,
-  t
+  t,
 }: handleDeleteHabitProps) {
   const confirmText = t("alerts.confirm-alert").split("-");
 
-  confirmAlert(confirmText[0], confirmText[1], { confirm: t("alerts.confirm-button"), cancel: t("alerts.cancel-button") }).then(
-    (response) => {
-      if (response.isConfirmed) {
-        try {
-          deleteHabit(id);
-          Swal.fire("Hábito deletado com sucesso", "", "success");
-        } catch (error) {
-          Swal.fire("Oops, parece que houve um erro...", "error");
-        }
+  confirmAlert(confirmText[0], confirmText[1], {
+    confirm: t("alerts.confirm-button"),
+    cancel: t("alerts.cancel-button"),
+  }).then((response) => {
+    if (response.isConfirmed) {
+      try {
+        deleteHabit(id);
+        Swal.fire(t("alerts.successful-deletion"), "", "success");
+      } catch (error) {
+        Swal.fire(t("alerts.error"), "error");
       }
     }
-  );
+  });
 }

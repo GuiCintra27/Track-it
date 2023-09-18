@@ -1,5 +1,6 @@
 import { SignInData, SignUpData } from "@/lib/types/auth";
 import { setUserApiData, setUserLocalData } from "../storage/user-slice";
+import { TFunction } from "i18next";
 
 interface HandleFormProps {
   data: SignUpData | SignInData;
@@ -10,6 +11,9 @@ interface HandleFormProps {
   successToast: any;
   errorToast: any;
   router: any;
+  signInError: any;
+  signUpError: any;
+  t: TFunction<"translation", undefined>;
 }
 
 export async function handleSignUpForm({
@@ -21,6 +25,9 @@ export async function handleSignUpForm({
   successToast,
   errorToast,
   router,
+  signInError,
+  signUpError,
+  t,
 }: HandleFormProps) {
   try {
     await signUp({ ...data });
@@ -33,11 +40,12 @@ export async function handleSignUpForm({
       successToast,
       errorToast,
       router,
+      signInError,
+      t,
     });
-  } catch (err: any) {
-    if (err.response?.status === 409)
-      errorToast("Email ou nome de usuário já está em uso");
-    else errorToast("Houve um erro ao conectar com o servidor");
+  } catch {
+    if (signUpError.response?.status === 409) errorToast(t("alerts.conflict"));
+    else errorToast(t("alerts.server-error"));
   }
 }
 
@@ -49,7 +57,9 @@ export async function handleSignInForm({
   successToast,
   errorToast,
   router,
-}: Omit<HandleFormProps, "signUp">) {
+  signInError,
+  t,
+}: Omit<HandleFormProps, "signUp" | "signUpError">) {
   try {
     await signIn({ ...data });
 
@@ -66,14 +76,18 @@ export async function handleSignInForm({
         localData: {
           name: signInData.name,
           profileImage: signInData.image,
-        }
+        },
       })
     );
-    
+
     router.push("/");
-    successToast("Login realizado!");
-  } catch (err: any) {
-    if (err.response?.status === 401) errorToast("Email ou senha inválidos!");
-    else errorToast("Houve um erro ao conectar com o servidor");
+    successToast(t("alerts.log-in"));
+  } catch {
+    if (
+      signInError.response?.status === 401 ||
+      signInError.response?.status === 422
+    )
+      errorToast(t("alerts.invalid-credentials"));
+    else errorToast(t("alerts.server-error"));
   }
 }
