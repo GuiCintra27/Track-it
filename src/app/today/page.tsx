@@ -28,8 +28,8 @@ export default function Today() {
   });
 
   function handleHabitClick(done: boolean, id: number) {
-    if (!done) handleCheckHabit({ id, checkHabit });
-    else handleUncheckHabit({ id, uncheckHabit });
+    if (!done) handleCheckHabit({ id, checkHabit, t });
+    else handleUncheckHabit({ id, uncheckHabit, t });
   }
 
   return (

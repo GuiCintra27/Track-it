@@ -12,6 +12,7 @@
       "invalid-credentials": "Email ou senha inválidos!",
       "server-error": "Houve um erro ao conectar com o servidor",
       "log-in": "Login realizado!",
+      "automatic-log-in": "Houve um erro ao entrar automaticamente após cadastro",
       "conflict": "Email ou nome de usuário já está em uso",
       "error": "Oops, parece que houve um erro...",
       "successful-deletion": "Hábito deletado com sucesso",

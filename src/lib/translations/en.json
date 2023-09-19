@@ -12,6 +12,7 @@
       "invalid-credentials": "Invalid email or password!",
       "server-error": "There was an error connecting to the server",
       "log-in": "Login successful!",
+      "automatic-log-in": "There was an error when automatically logging in after registration",
       "conflict": "Email or username is already in use",
       "error": "Oops, it looks like there was an error...",
       "successful-deletion": "Habit deleted successfully",
@@ -43,7 +44,7 @@
       "habit-name": "habit name",
       "create-habit-cancel-button": "Cancel",
       "create-habit-save-button": "Save",
-      "has-no-habit-subtitle": "You don't have any habits registered yet. Add a habit to start tracking!",
+      "has-no-habits-subtitle": "You don't have any habits registered yet. Add a habit to start tracking!",
       "week-days": "SMTWTFS"
     },
     "profile": {
