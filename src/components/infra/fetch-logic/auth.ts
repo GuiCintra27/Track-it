@@ -1,5 +1,6 @@
 import { TFunction } from "i18next";
 import { SetStateAction } from "react";
+import { instance } from "@/services/instance";
 
 import { SignInData, SignUpData } from "@/lib/types/auth";
 import { setUserApiData, setUserLocalData } from "../storage/user-slice";
@@ -20,11 +21,11 @@ interface HandleFormProps {
 export async function handleSignUpForm({
   data,
   signUp,
-  setUserData
+  setUserData,
 }: Pick<HandleFormProps, "data" | "signUp" | "setUserData">) {
   await signUp({ ...data });
 
-  setUserData(data)
+  setUserData(data);
 }
 
 export async function handleSignInForm({
@@ -40,7 +41,10 @@ export async function handleSignIn({
   successToast,
   router,
   t,
-}: Omit<HandleFormProps, "signUp" | "signIn" | "data" | "signUpStatus" | "setUserData">) {
+}: Omit<
+  HandleFormProps,
+  "signUp" | "signIn" | "data" | "signUpStatus" | "setUserData"
+>) {
   await dispatch(
     setUserApiData({
       apiData: {
@@ -58,6 +62,8 @@ export async function handleSignIn({
     })
   );
 
+  instance.defaults.headers["Authorization"] = `Bearer ${signInData.token}`;
+  
   router.push("/");
   successToast(t("alerts.log-in"));
 }
