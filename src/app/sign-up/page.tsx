@@ -50,17 +50,6 @@ export default function SignUp() {
     t,
   };
 
-  const dependencies = [
-    signUpError,
-    signUpStatus,
-    signInData,
-    signInError,
-    signInProps,
-    signIn,
-    userData,
-    t,
-  ]
-
   useEffect(() => {
     if (signUpError instanceof AxiosError) {
       if (signUpError.response?.status === 409)
@@ -76,7 +65,7 @@ export default function SignUp() {
       errorToast(t("alerts.automatic-log-in"));
 
     if (signInData) handleSignIn(signInProps);
-  }, dependencies );
+  }, [signUpError, signUpStatus, signInData, signInError]);
 
   return (
     <AuthLayout>

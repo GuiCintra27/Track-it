@@ -58,7 +58,7 @@ export default function SignIn() {
     }
 
     if (signInData) handleSignIn(signInProps);
-  }, [signInError, signInData, signInProps, t]);
+  }, [signInError, signInData]);
 
   return (
     <AuthLayout>
