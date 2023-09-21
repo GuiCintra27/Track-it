@@ -50,20 +50,33 @@ export default function SignUp() {
     t,
   };
 
+  const dependencies = [
+    signUpError,
+    signUpStatus,
+    signInData,
+    signInError,
+    signInProps,
+    signIn,
+    userData,
+    t,
+  ]
+
   useEffect(() => {
     if (signUpError instanceof AxiosError) {
-      if (signUpError.response?.status === 409) errorToast(t("alerts.conflict"));
+      if (signUpError.response?.status === 409)
+        errorToast(t("alerts.conflict"));
       else errorToast(t("alerts.server-error"));
     }
-  
-    if (signUpStatus === "success") {signIn(userData!);}
-  
+
+    if (signUpStatus === "success") {
+      signIn(userData!);
+    }
+
     if (signInError instanceof AxiosError)
       errorToast(t("alerts.automatic-log-in"));
-  
-    if (signInData) handleSignIn(signInProps);
 
-  }, [signUpError, signUpStatus, signInData, signInError])
+    if (signInData) handleSignIn(signInProps);
+  }, dependencies );
 
   return (
     <AuthLayout>
@@ -71,7 +84,9 @@ export default function SignUp() {
 
       <FormProvider {...signUpForm}>
         <Form.Root
-          onSubmit={handleSubmit((data) => handleSignUpForm({ data, signUp, setUserData }))}
+          onSubmit={handleSubmit((data) =>
+            handleSignUpForm({ data, signUp, setUserData })
+          )}
         >
           <Form.Input name="name" type="text" placeholder={t("auth.name")} />
           <Form.Error field="name" />

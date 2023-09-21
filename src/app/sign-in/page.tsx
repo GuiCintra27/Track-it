@@ -56,9 +56,9 @@ export default function SignIn() {
         errorToast(t("alerts.invalid-credentials"));
       else errorToast(t("alerts.server-error"));
     }
-  
+
     if (signInData) handleSignIn(signInProps);
-  }, [signInError, signInData])
+  }, [signInError, signInData, signInProps, t]);
 
   return (
     <AuthLayout>
