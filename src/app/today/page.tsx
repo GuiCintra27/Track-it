@@ -10,7 +10,9 @@ import { useAppSelector } from "@/hooks/useAppSelector";
 import { Footer } from "../../components/common/footer";
 import { Header } from "../../components/common/header";
 import { todayHabitsResponse } from "@/services/todayApi";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { LoaderRing } from "@/components/common/loader-ring";
+import { userInfo } from "@/components/infra/storage/user-slice";
 import { AppLayout } from "../../components/common/layouts/appLayout";
 import {
   handleCheckHabit,
@@ -21,10 +23,9 @@ export default function Today() {
   const { t } = useTranslation();
   const { checkHabit, uncheckHabit } = useTodayHabitsApi();
   const todayHabits = useAppSelector((state) => state.todayHabits);
-  const userApiData = useAppSelector((state) => state.user.apiData);
 
   useEffect(() => {
-    if (!userApiData) redirect("/sign-in");
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
   });
 
   function handleHabitClick(done: boolean, id: number) {

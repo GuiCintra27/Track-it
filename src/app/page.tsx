@@ -11,8 +11,9 @@ import { errorToast } from "@/components/UI/alerts";
 import { Header } from "../components/common/header";
 import { Footer } from "../components/common/footer";
 import { confirmAlert } from "@/components/UI/alerts";
-import { useAppSelector } from "@/hooks/useAppSelector";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { LoaderRing } from "@/components/common/loader-ring";
+import { userInfo } from "@/components/infra/storage/user-slice";
 import { AppLayout } from "../components/common/layouts/appLayout";
 import {
   handleCreateHabit,
@@ -31,10 +32,9 @@ export default function Home() {
     deleteHabit,
     habitsError,
   } = useHabitsApi();
-  const userApiData = useAppSelector((state) => state.user.apiData);
 
   useEffect(() => {
-    if (!userApiData) redirect("/sign-in");
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
   });
 
   const createHabitProps = {

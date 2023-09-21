@@ -11,6 +11,8 @@ import { Title } from "../../components/UI/title";
 import { SettingsData } from "@/lib/types/settings";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { Header } from "../../components/common/header";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { userInfo } from "@/components/infra/storage/user-slice";
 import { settingsSchema } from "@/lib/validations/settings-schema";
 import { AppLayout } from "../../components/common/layouts/appLayout";
 import { handleSettingsForm } from "@/components/infra/fetch-logic/settings";
@@ -57,7 +59,8 @@ export default function Profile() {
   const { handleSubmit } = settingsForm;
 
   useEffect(() => {
-    if (!apiData) redirect("/sign-in");
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
+
   }, [apiData]);
 
   return (

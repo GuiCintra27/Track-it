@@ -1,32 +1,41 @@
 import Link from "next/link";
+import { useState } from "react";
 import styled from "styled-components";
+import { redirect } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 import { useLogout } from "@/hooks/useLogout";
 
 export function Menu() {
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+  const [logged, setLogged] = useState(true);
+
   const menuList = [
     {
-      icon: 'user-icon.svg',
+      icon: "user-icon.svg",
       name: t("header.profile"),
       url: "/profile",
-      function: () => {}
+      function: () => {},
     },
     {
-      icon: 'settings-icon.svg',
+      icon: "settings-icon.svg",
       name: t("header.settings"),
       url: "/settings",
-      function: () => {}
+      function: () => {},
     },
     {
-      icon: 'logout-icon.svg',
+      icon: "logout-icon.svg",
       name: t("header.log-out"),
       url: "",
-      function: useLogout
+      function: () => {
+        useLogout();
+        setLogged(false);
+      },
     },
   ];
+
+  if (!logged) redirect("/sign-in");
+
   return (
     <Container>
       {menuList.map((item, index) => (
@@ -50,9 +59,9 @@ const Container = styled.div`
 
   position: absolute;
   z-index: 1;
-  bottom: .5rem;
-  right: .5rem;
-  
+  bottom: 0.5rem;
+  right: 0.5rem;
+
   transform: translateY(100%);
 
   background-color: white;
@@ -61,23 +70,23 @@ const Container = styled.div`
 
   border-radius: 1rem;
 
-  & > div{
+  & > div {
     display: flex;
     flex-direction: column;
   }
 
   .separator {
-    height: .1rem;
+    height: 0.1rem;
     width: 100%;
 
-    margin: .8rem 0;
+    margin: 0.8rem 0;
 
     background-color: var(--stroke);
   }
 
   .content {
     display: flex;
-    padding: .4rem;
+    padding: 0.4rem;
     gap: 0.8rem;
 
     img {
@@ -90,10 +99,10 @@ const Container = styled.div`
       color: #666666;
     }
 
-    &:active{
+    &:active {
       background-color: var(--medium-gray);
       filter: brightness(1.1);
-      border-radius: .25rem;
+      border-radius: 0.25rem;
     }
   }
 `;

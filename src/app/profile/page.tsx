@@ -10,7 +10,9 @@ import { Title } from "../../components/UI/title";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { Header } from "../../components/common/header";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ChangeProfileData } from "@/lib/types/profile-data";
+import { userInfo } from "@/components/infra/storage/user-slice";
 import { errorToast, successToast } from "@/components/UI/alerts";
 import { ProfileImage } from "@/components/UI/profile/profileImage";
 import { AppLayout } from "../../components/common/layouts/appLayout";
@@ -37,7 +39,7 @@ export default function Profile() {
   const watchProfileImage = watch("profileImage");
 
   useEffect(() => {
-    if (!apiData) redirect("/sign-in");
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
 
     if (
       watchProfileImage !== "/undefined-user.png" &&

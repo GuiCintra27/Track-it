@@ -8,8 +8,9 @@ import { Title } from "../../components/UI/title";
 import { useHistoryApi } from "@/hooks/api/history";
 import { Footer } from "../../components/common/footer";
 import { Header } from "../../components/common/header";
-import { useAppSelector } from "@/hooks/useAppSelector";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { LoaderRing } from "@/components/common/loader-ring";
+import { userInfo } from "@/components/infra/storage/user-slice";
 import { HistoryCalendar } from "@/components/UI/historyCalendar";
 import { AppLayout } from "../../components/common/layouts/appLayout";
 
@@ -17,10 +18,9 @@ export default function History() {
   const { t } = useTranslation();
   const { history, historyLoading } = useHistoryApi();
   const [mainDate, setMainDate] = useState(new Date());
-  const userApiData = useAppSelector((state) => state.user.apiData);
 
   useEffect(() => {
-    if (!userApiData) redirect("/sign-in");
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
   });
 
   return (
