@@ -42,7 +42,7 @@ const Container = styled.div`
   left: 0;
   z-index: 1;
 
-  height: 100%;
+  height: 100vh;
   width: 100%;
 
   display: flex;
@@ -98,8 +98,8 @@ const Container = styled.div`
     top: 0;
     left: 0;
 
+    height: 100vh;
     width: 100%;
-    height: 100%;
   }
 `;
 
