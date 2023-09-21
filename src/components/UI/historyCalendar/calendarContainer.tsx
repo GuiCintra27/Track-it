@@ -94,7 +94,7 @@ export const CalendarContainer = styled.div`
       }
 
       &.color-white {
-        color: white;
+        color: white !important;
       }
 
       &.opacity {

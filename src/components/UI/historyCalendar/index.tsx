@@ -75,7 +75,7 @@ export function HistoryCalendar({
           item.habits.map((habit) => {
             if (habitsDone !== "fail") {
               habit.done
-                ? (habitsDone = "succes color-white")
+                ? (habitsDone = "success color-white")
                 : (habitsDone = "fail color-white");
             }
           });
