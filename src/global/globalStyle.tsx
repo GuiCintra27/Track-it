@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
     --light-gray: #ebebeb;
     --calendar-text: #0b0b0b;
     --calendar-button: #f1eeee;
+    --calendar-inspect-list: rgba(255, 255, 255, .45);
+    --calendar-inspect-list-item: #F6F3F3;
     --border: none;
     --body-bg-color: #f2f2f2;
     --auth-bg: #ffffff;
@@ -43,6 +45,8 @@ const GlobalStyle = createGlobalStyle`
     --light-gray: #3f3f3f;
     --calendar-text: #ffffff;
     --calendar-button: #777777;
+    --calendar-inspect-list: rgba(132, 126, 126, .45);
+    --calendar-inspect-list-item: #404040;
     --border: #dbd8d8;
     --body-bg-color: #2C2C2C;
     --auth-bg: #2C2C2C;

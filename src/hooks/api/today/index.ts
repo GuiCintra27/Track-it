@@ -26,12 +26,14 @@ export function useTodayHabitsApi() {
   const { mutate: checkHabit } = useMutation(api.checkTodayHabit, {
     onSuccess: () => {
       queryClient.invalidateQueries(["today-habits-list"]);
+      queryClient.invalidateQueries(["history"]);
     },
   });
 
   const { mutate: uncheckHabit } = useMutation(api.uncheckTodayHabit, {
     onSuccess: () => {
       queryClient.invalidateQueries(["today-habits-list"]);
+      queryClient.invalidateQueries(["history"]);
     },
   });
 

@@ -1,7 +1,8 @@
 import { TFunction } from "i18next";
 import Calendar from "react-calendar";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
+import { Inspect } from "./inspect";
 import { History } from "@/lib/types/history";
 import { CalendarContainer } from "./calendarContainer";
 
@@ -18,6 +19,10 @@ export function HistoryCalendar({
   history,
   t,
 }: HistoryCalendarProps) {
+  const [inspectDayHabits, setinspectDayHabits] = useState<History | null>(
+    null
+  );
+
   const tileClassName = ({ date, view }: { date: Date; view: string }) => {
     const customClasses: string[] = [];
     const today = new Date();
@@ -73,7 +78,7 @@ export function HistoryCalendar({
           habitYear === dateYear
         ) {
           item.habits.map((habit) => {
-            if (habitsDone !== "fail") {
+            if (habitsDone?.slice(0, 4) !== "fail") {
               habit.done
                 ? (habitsDone = "success color-white")
                 : (habitsDone = "fail color-white");
@@ -99,7 +104,25 @@ export function HistoryCalendar({
         onActiveStartDateChange={({ activeStartDate }) =>
           setMainDate(new Date(activeStartDate!))
         }
+        onClickDay={(value) => {
+          history?.map((item) => {
+            const habitDate = new Date(item.habits[0].date);
+            if (
+              value.getDate() === habitDate.getDate() &&
+              value.getMonth() === habitDate.getMonth()
+            )
+              setinspectDayHabits(item);
+          });
+        }}
       />
+
+      {inspectDayHabits && (
+        <Inspect
+          setinspectDayHabits={setinspectDayHabits}
+          habits={inspectDayHabits}
+          t={t}
+        />
+      )}
     </CalendarContainer>
   );
 }

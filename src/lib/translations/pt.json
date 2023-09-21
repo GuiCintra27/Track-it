@@ -79,7 +79,11 @@
     },
     "history": {
       "title": "Histórico",
-      "locale": "pt"
+      "locale": "pt",
+      "habit-list-title": "Hábitos do dia",
+      "close-list": "Fechar Lista",
+      "complete": "Completo",
+      "incomplete": "Incompleto"
     }
   }
 }

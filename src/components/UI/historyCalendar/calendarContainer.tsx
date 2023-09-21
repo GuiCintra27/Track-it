@@ -11,7 +11,7 @@ export const CalendarContainer = styled.div`
 
     padding: 1rem;
 
-    border-radius: 10px;
+    border-radius: 1rem;
     background: var(--light);
 
     .react-calendar__navigation {
@@ -22,7 +22,7 @@ export const CalendarContainer = styled.div`
         height: 3rem;
         min-width: 2rem;
 
-        border-radius: 5px;
+        border-radius: .5rem;
         border: 1px solid var(--border);
         background-color: var(--calendar-button);
 
@@ -82,15 +82,15 @@ export const CalendarContainer = styled.div`
       &.today abbr {
         background-color: var(--dark-blue);
 
-        border-radius: 10px;
+        border-radius: 1rem;
 
         clip-path: none;
       }
 
       &.today.button {
         background-color: var(--dark-blue);
-        
-        border-radius: 10px;
+
+        border-radius: 1rem;
       }
 
       &.color-white {

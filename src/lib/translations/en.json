@@ -79,7 +79,11 @@
     },
     "history": {
       "title": "History",
-      "locale": "en"
+      "locale": "en",
+      "habit-list-title": "Habits of the day",
+      "close-list": "Close List",
+      "complete": "Complete",
+      "incomplete": "Incomplete"
     }
   }
 }
