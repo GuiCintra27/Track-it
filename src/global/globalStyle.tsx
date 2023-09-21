@@ -5,6 +5,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
     --green: #8fc549;
+    --red: #e02929;
     --dark-blue: #126ba5;
     --blue: #0081CC;
     --light-blue: #52b6ff;
@@ -15,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
     --placeholder: #dbdbdb;
     --non-completed-habit: #e7e7e7;
     --light-gray: #ebebeb;
+    --calendar-text: #0b0b0b;
+    --calendar-button: #f1eeee;
+    --border: none;
     --body-bg-color: #f2f2f2;
     --auth-bg: #ffffff;
     --light: #ffffff;
@@ -26,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
   [data-theme="dark"]{
     --green: #8fc549;
+    --red: #c52d2d;
     --dark-blue: #5AB5F0;
     --blue: #0081CC;
     --light-blue: #52b6ff;
@@ -35,9 +40,12 @@ const GlobalStyle = createGlobalStyle`
     --stroke: #d4d4d4;
     --placeholder: #A6A1A1;
     --non-completed-habit: #e7e7e7;
-    --light-gray: #777777;
+    --light-gray: #3f3f3f;
+    --calendar-text: #ffffff;
+    --calendar-button: #777777;
+    --border: #dbd8d8;
     --body-bg-color: #2C2C2C;
-    --auth-bg: #2C2C2C;;
+    --auth-bg: #2C2C2C;
     --light: #404040;
     --gray-scale: 0;
     --brightness: 0.3;

@@ -76,6 +76,10 @@
       "sequence": "Current sequence:",
       "record": "Your record: ",
       "day": " Day"
+    },
+    "history": {
+      "title": "History",
+      "locale": "en"
     }
   }
 }

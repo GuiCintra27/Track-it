@@ -18,6 +18,7 @@ export function useHabitsApi() {
     onSuccess: () => {
       queryClient.invalidateQueries(["habits-list"]);
       queryClient.invalidateQueries(["today-habits-list"]);
+      queryClient.invalidateQueries(["history"]);
     },
   });
 
@@ -25,6 +26,7 @@ export function useHabitsApi() {
     onSuccess: () => {
       queryClient.invalidateQueries(["habits-list"]);
       queryClient.invalidateQueries(["today-habits-list"]);
+      queryClient.invalidateQueries(["history"]);
     },
   });
 
