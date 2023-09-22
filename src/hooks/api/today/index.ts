@@ -1,16 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import * as api from "@/services/todayApi";
-
-function getTimeUntilNextDay(): number {
-  const now = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0, 0); // Set time to the start of the next day
-
-  const timeUntilNextDay = tomorrow.getTime() - now.getTime();
-  return timeUntilNextDay;
-}
+import { timeUntilTheNextDay } from "@/lib/functions/timeUntilTheNextDay";
 
 export function useTodayHabitsApi() {
   const queryClient = useQueryClient();
@@ -19,7 +10,7 @@ export function useTodayHabitsApi() {
     ["today-habits-list"],
     api.getTodayHabits,
     {
-      staleTime: getTimeUntilNextDay(),
+      staleTime: timeUntilTheNextDay,
     }
   );
 

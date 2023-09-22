@@ -7,10 +7,12 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { useAuthApi } from "@/hooks/api/auth";
 import { SignInData } from "@/lib/types/auth";
+import { useLogout } from "@/hooks/useLogout";
 import { Form } from "../../components/UI/form";
 import { errorToast, successToast } from "@/components/UI/alerts";
 import { signInSchema } from "../../lib/validations/sign-in-schema";
@@ -21,10 +23,12 @@ import {
 } from "@/components/infra/fetch-logic/auth";
 
 export default function SignIn() {
+  const router = useRouter();
+  const { logOut } = useLogout();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const queryClient = useQueryClient();
   const { signInData, signIn, signInError } = useAuthApi();
-  const router = useRouter();
 
   const signInForm = useForm<SignInData>({
     resolver: zodResolver(signInSchema),
@@ -46,6 +50,11 @@ export default function SignIn() {
     router,
     t,
   };
+
+  useEffect(() => {
+    logOut();
+    queryClient.clear();
+  });
 
   useEffect(() => {
     if (signInError instanceof AxiosError) {

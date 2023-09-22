@@ -20,6 +20,10 @@ import { handleChangeProfileForm } from "@/components/infra/fetch-logic/profile"
 import { changeProfileDataSchema } from "@/lib/validations/change-profile-data-schema";
 
 export default function Profile() {
+  useEffect(() => {
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
+  });
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { apiData, localData } = useAppSelector((state) => state.user);
@@ -39,8 +43,6 @@ export default function Profile() {
   const watchProfileImage = watch("profileImage");
 
   useEffect(() => {
-    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
-
     if (
       watchProfileImage !== "/undefined-user.png" &&
       watchProfileImage.length > 0
@@ -65,7 +67,7 @@ export default function Profile() {
     },
     successToast,
     errorToast,
-    t
+    t,
   };
 
   return (

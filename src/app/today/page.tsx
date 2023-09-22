@@ -20,13 +20,13 @@ import {
 } from "@/components/infra/fetch-logic/todayHabits";
 
 export default function Today() {
-  const { t } = useTranslation();
-  const { checkHabit, uncheckHabit } = useTodayHabitsApi();
-  const todayHabits = useAppSelector((state) => state.todayHabits);
-
   useEffect(() => {
     if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
   });
+  
+  const { t } = useTranslation();
+  const { checkHabit, uncheckHabit } = useTodayHabitsApi();
+  const todayHabits = useAppSelector((state) => state.todayHabits);
 
   function handleHabitClick(done: boolean, id: number) {
     if (!done) handleCheckHabit({ id, checkHabit, t });

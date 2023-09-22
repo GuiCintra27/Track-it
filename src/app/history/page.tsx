@@ -15,13 +15,13 @@ import { HistoryCalendar } from "@/components/UI/historyCalendar";
 import { AppLayout } from "../../components/common/layouts/appLayout";
 
 export default function History() {
-  const { t } = useTranslation();
-  const { history, historyLoading } = useHistoryApi();
-  const [mainDate, setMainDate] = useState(new Date());
-
   useEffect(() => {
     if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
   });
+  
+  const { t } = useTranslation();
+  const { history, historyLoading } = useHistoryApi();
+  const [mainDate, setMainDate] = useState(new Date());
 
   return (
     <AppLayout>

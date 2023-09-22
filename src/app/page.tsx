@@ -21,6 +21,10 @@ import {
 } from "@/components/infra/fetch-logic/habits";
 
 export default function Home() {
+  useEffect(() => {
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
+  });
+  
   const { t } = useTranslation();
   const [toggleCreateCard, setToggleCreateCard] = useState(false);
   const [habitName, setHabitName] = useState("");
@@ -33,9 +37,6 @@ export default function Home() {
     habitsError,
   } = useHabitsApi();
 
-  useEffect(() => {
-    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
-  });
 
   const createHabitProps = {
     data: { name: habitName, days: habitDays },

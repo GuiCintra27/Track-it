@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { useAuthApi } from "@/hooks/api/auth";
@@ -19,11 +20,14 @@ import {
   handleSignIn,
   handleSignUpForm,
 } from "@/components/infra/fetch-logic/auth";
+import { useLogout } from "@/hooks/useLogout";
 
 export default function SignUp() {
   const router = useRouter();
+  const { logOut } = useLogout();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const queryClient = useQueryClient();
   const { signIn, signInData, signInError, signUp, signUpStatus, signUpError } =
     useAuthApi();
   const [userData, setUserData] = useState<SignUpData | null>(null);
@@ -49,6 +53,11 @@ export default function SignUp() {
     router,
     t,
   };
+
+  useEffect(() => {
+    logOut();
+    queryClient.clear();
+  });
 
   useEffect(() => {
     if (signUpError instanceof AxiosError) {

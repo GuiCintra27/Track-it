@@ -18,9 +18,12 @@ import { AppLayout } from "../../components/common/layouts/appLayout";
 import { handleSettingsForm } from "@/components/infra/fetch-logic/settings";
 
 export default function Profile() {
+  useEffect(() => {
+    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
+  });
+
   const { t } = useTranslation();
   const { i18n } = useTranslation();
-  const { apiData } = useAppSelector((state) => state.user);
   const { settings } = useAppSelector((state) => state.settings);
   const dispatch = useDispatch();
 
@@ -57,11 +60,6 @@ export default function Profile() {
   });
 
   const { handleSubmit } = settingsForm;
-
-  useEffect(() => {
-    if (!useLocalStorage.getItem(userInfo.userApiData)) redirect("/sign-in");
-
-  }, [apiData]);
 
   return (
     <AppLayout>
