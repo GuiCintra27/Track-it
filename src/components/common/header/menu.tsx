@@ -27,14 +27,14 @@ export function Menu() {
       icon: "logout-icon.svg",
       name: t("header.log-out"),
       url: "",
-      function: () => {
-        useLogout();
-        setLogged(false);
-      },
+      function: () => setLogged(false),
     },
   ];
 
-  if (!logged) redirect("/sign-in");
+  if (!logged) {
+    useLogout();
+    redirect("/sign-in");
+  }
 
   return (
     <Container>
