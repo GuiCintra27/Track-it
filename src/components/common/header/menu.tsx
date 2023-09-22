@@ -8,6 +8,7 @@ import { useLogout } from "@/hooks/useLogout";
 
 export function Menu() {
   const { t } = useTranslation();
+  const { logOut } = useLogout();
   const [logged, setLogged] = useState(true);
 
   const menuList = [
@@ -32,7 +33,7 @@ export function Menu() {
   ];
 
   if (!logged) {
-    useLogout();
+    logOut();
     redirect("/sign-in");
   }
 
