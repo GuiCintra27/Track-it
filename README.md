@@ -1,55 +1,55 @@
 # English version 🇱🇷 - [(Go to Brazilian version 🇧🇷)](https://github.com/GuiCintra27/Track-it/blob/main/readme-portuguese.md)
 
-<img src="./public/preview/track-it.png" width="100%" style="border-radius: 5px; margin-bottom: 2rem;"/> 
+<img src="./public/preview/track-it.png" width="100%" style="border-radius: 5px; margin-bottom: 2rem;"/>
 
 An mobile app to create and track habits!
 
 ### Sign In / Sign Up
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="./public/preview/log-in.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
-  <img src="./public/preview/sign-up.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/log-in.png" width="45%" style="margin-bottom: 1rem;"/> 
+  <img src="./public/preview/sign-up.png" width="45%" style="margin-bottom: 1rem;"/>
 </div>
 
 ### Home
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/home.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
-  <img src="./public/preview/create-new-habit.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
-  <img src="./public/preview/delete-habit.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/home.png" width="45%" style="margin-bottom: 1rem;"/> 
+  <img src="./public/preview/create-new-habit.png" width="45%" style="margin-bottom: 1rem;"/> 
+  <img src="./public/preview/delete-habit.png" width="45%" style="margin-bottom: 1rem;"/>
 </div>
 
 ### Today Habits
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/today.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/today-no-habits-completed.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/today.png" width="45%" style="margin-bottom: 1rem;"/>
+  <img src="./public/preview/today-no-habits-completed.png" width="45%" style="margin-bottom: 1rem;"/>
 </div>
 
 ### History
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/history.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/inspect-day-habits.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/history.png" width="45%" style="margin-bottom: 1rem;"/>
+  <img src="./public/preview/inspect-day-habits.png" width="45%" style="margin-bottom: 1rem;"/>
 </div>
 
 ### User Settings
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/profile.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/settings.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/profile.png" width="45%" style="margin-bottom: 1rem;"/>
+  <img src="./public/preview/settings.png" width="45%" style="margin-bottom: 1rem;"/>
 </div>
 
 ### Theme and Languages
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/history.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/inspect-day-habits.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/history.png" width="45%" style="margin-bottom: 1rem;"/>
+  <img src="./public/preview/inspect-day-habits.png" width="45%" style="margin-bottom: 1rem;"/>
 </div>
 
 Try it out now at: https://track--it.vercel.app/
 
-[Figma of the project](https://www.figma.com/file/bSwetaNMPrtYkYj3y68hHk/TrackIt-(Copy)?type=design&node-id=0%3A1&mode=design&t=gKE3s5eyBA53pevq-1)
+[Figma of the project](<https://www.figma.com/file/bSwetaNMPrtYkYj3y68hHk/TrackIt-(Copy)?type=design&node-id=0%3A1&mode=design&t=gKE3s5eyBA53pevq-1>)
 
 ## About the project
 
