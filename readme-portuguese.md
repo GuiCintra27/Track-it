@@ -1,17 +1,17 @@
-# English version 🇱🇷 - [(Go to Brazilian version 🇧🇷)](https://github.com/GuiCintra27/Track-it/blob/main/readme-portuguese.md)
+# Versão brasileira 🇧🇷
 
-<img src="./public/preview/track-it.png" width="100%" style="border-radius: 5px; margin-bottom: 2rem;"/> 
+<img src="./public/preview/track-it.png" width="100%" style="border-radius: 5px; margin-bottom: 2rem;"/>
 
-An mobile app to create and track habits!
+Um app mobile para criar e acompanhar hábitos!
 
-### Sign In / Sign Up
+### Entrar / Cadastro
 
 <div style="display: flex; justify-content: space-between;">
   <img src="./public/preview/log-in.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
   <img src="./public/preview/sign-up.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
 </div>
 
-### Home
+### Página Inicial
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
   <img src="./public/preview/home.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
@@ -19,61 +19,62 @@ An mobile app to create and track habits!
   <img src="./public/preview/delete-habit.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
 </div>
 
-### Today Habits
+### Hábitos do dia
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
   <img src="./public/preview/today.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
   <img src="./public/preview/today-no-habits-completed.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
 </div>
 
-### History
+### Histórico
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
   <img src="./public/preview/history.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
   <img src="./public/preview/inspect-day-habits.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
 </div>
 
-### User Settings
+### Configurações do usuário
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+  <img src="./public/preview/menu.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
   <img src="./public/preview/profile.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
   <img src="./public/preview/settings.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
 </div>
 
-### Theme and Languages
+### Tema e Linguagens
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/history.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/inspect-day-habits.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/themes.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+  <img src="./public/preview/translate.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
 </div>
 
-Try it out now at: https://track--it.vercel.app/
+Disponível em: https://track--it.vercel.app/
 
-[Figma of the project](https://www.figma.com/file/bSwetaNMPrtYkYj3y68hHk/TrackIt-(Copy)?type=design&node-id=0%3A1&mode=design&t=gKE3s5eyBA53pevq-1)
+[Figma do projeto](<https://www.figma.com/file/bSwetaNMPrtYkYj3y68hHk/TrackIt-(Copy)?type=design&node-id=0%3A1&mode=design&t=gKE3s5eyBA53pevq-1>)
 
-## About the project
+## Sobre o Projeto
 
-This project aims to help people create and monitor their habits. Being able to manage whether they fulfilled a habit on a given day. In addition to being able to see your habit history, and monitor the development of a new habit!
+Este projeto visa auxiliar as pessoas a criarem e acompanharem seus hábitos. Podendo gerenciar se cumpriram, ou não, um hábito em determinado dia. Além de poder ver seu histórico de hábitos, e monitorar o desenvolvimento de um novo hábito!
 
-The application has light and dark themes, and language change (the default language of the site is the one configured in the user's browser)
+A aplicação conta com temas claro e escuro, e mudança de linguagem (a linguagem padrão do site é a configurada no navegador do usuário)
 
-Below is a list of some of the implemented features:
+Abaixo segue a lista de algumas das funcionalidades implementadas:
 
-- LogIn/Register
-- Local Storage for data persistence
-- Redux for sharing data between components
-- Zod and Hook Form for form manipulation
-- React Query for asynchronous data management and API communication
-- Data caching and controlled cache invalidation
-- Changing the theme from css variables
-- Change language using i18n
-- Use of axios instances
+- Entrada/Cadastro
+- Local Storage para persistência dos dados
+- Redux para compartilhamento dos dados entre componentes
+- Zod e Hook Form para manipulação de formulário
+- React Query para gerenciamento de dados assíncronos e comunicação com API
+- Cacheamento de dados e invalidação de cache controlada
+- Mudança de tema a partir de variáveis css
+- Mudança de idioma utilizando i18n
+- Utilização de instâncias do axios
 - Design Patterns
-- Architecture Patterns
+- Arquitechture Patterns
 
-## Technologies
+## Tecnologias
 
-The following tools and frameworks were used in the construction of the project: <br/>
+Abaixo seguem as ferramentas e frameworks utilizados no projeto: <br/>
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap;"> 
   <img alt="Gui-Next" height="30" src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white">
