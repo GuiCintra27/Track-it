@@ -1,51 +1,50 @@
 # Versão brasileira 🇧🇷
 
-<img src="./public/preview/track-it.png" width="100%" style="border-radius: 5px; margin-bottom: 2rem;"/>
+<img src="./public/preview/track-it.png" width="100%"/>
 
 Um app mobile para criar e acompanhar hábitos!
 
 ### Entrar / Cadastro
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="./public/preview/log-in.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
-  <img src="./public/preview/sign-up.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-</div>
+<div style="display: inline_block">
+  <img src="./public/preview/log-in.png" width="300" /> 
+  <img src="./public/preview/sign-up.png" width="300" />
+</div></div>
 
 ### Página Inicial
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/home.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
-  <img src="./public/preview/create-new-habit.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/> 
-  <img src="./public/preview/delete-habit.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+<div style="display: inline_block">
+  <img src="./public/preview/home.png" width="300"/> 
+  <img src="./public/preview/create-new-habit.png" width="300"/> 
+  <img src="./public/preview/delete-habit.png" width="300"/>
 </div>
 
 ### Hábitos do dia
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/today.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/today-no-habits-completed.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+<div style="display: inline_block">
+  <img src="./public/preview/today.png" width="300"/>
+  <img src="./public/preview/today-no-habits-completed.png" width="300"/>
 </div>
 
 ### Histórico
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/history.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/inspect-day-habits.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+<div style="display: inline_block">
+  <img src="./public/preview/history.png" width="300"/>
+  <img src="./public/preview/inspect-day-habits.png" width="300"/>
 </div>
 
 ### Configurações do usuário
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/menu.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/profile.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/settings.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+<div style="display: inline_block">
+  <img src="./public/preview/profile.png" width="300"/>
+  <img src="./public/preview/settings.png" width="300"/>
 </div>
 
 ### Tema e Linguagens
 
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <img src="./public/preview/themes.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
-  <img src="./public/preview/translate.png" width="45%" style="border: 2px solid #0b0b0b; border-radius: 5px; margin-bottom: 1rem;"/>
+<div style="display: inline_block">
+  <img src="./public/preview/themes.png" width="300"/>
+  <img src="./public/preview/translate.png" width="300"/>
 </div>
 
 Disponível em: https://track--it.vercel.app/
@@ -76,7 +75,7 @@ Abaixo segue a lista de algumas das funcionalidades implementadas:
 
 Abaixo seguem as ferramentas e frameworks utilizados no projeto: <br/>
 
-<div style="display: flex; gap: 1rem; flex-wrap: wrap;"> 
+<div style="display: inline_block"> 
   <img alt="Gui-Next" height="30" src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white">
   <img alt="Gui-React" height="30" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
   <img alt="Gui-Redux" height="30" src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white">
