@@ -14,10 +14,11 @@ import { setTodayHabits } from "@/components/infra/storage/habits-slice";
 export function Footer() {
   const { t } = useTranslation();
   const { todayHabits, isFetching } = useTodayHabitsApi();
-  const progress = useAppSelector((state) => state.todayHabits.progress);
+  const {habits, progress} = useAppSelector((state) => state.todayHabits);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (todayHabits !== habits)
     dispatch(
       setTodayHabits({
         habits: todayHabits,

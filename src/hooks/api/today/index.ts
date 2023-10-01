@@ -11,6 +11,7 @@ export function useTodayHabitsApi() {
     api.getTodayHabits,
     {
       staleTime: timeUntilTheNextDay,
+      cacheTime: timeUntilTheNextDay,
     }
   );
 
