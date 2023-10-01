@@ -7,16 +7,16 @@ interface HabitRootProps extends HtmlHTMLAttributes<HTMLDivElement> {
 }
 
 export function HabitRoot({ children, marginBottom, ...rest }: HabitRootProps) {
-  return <Container margin_bottom={marginBottom} {...rest}>{children}</Container>;
+  return <Container $margin_bottom={marginBottom} {...rest}>{children}</Container>;
 }
 
-const Container = styled.div<{margin_bottom: string | undefined}>`
+const Container = styled.div<{$margin_bottom?: string}>`
   width: 90%;
   height: fit-content;
 
   padding: 1.5rem 1.8rem;
   margin-inline: auto;
-  margin-bottom: ${props => props.margin_bottom};
+  margin-bottom: ${props => props.$margin_bottom};
 
   display: flex;
   flex-direction: column;
