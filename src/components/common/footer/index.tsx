@@ -25,7 +25,7 @@ export function Footer() {
         loading: isFetching,
       })
     );
-  }, [todayHabits, isFetching, dispatch]);
+  }, [todayHabits, isFetching, dispatch, habits]);
   
   return (
     <StyledFooter>
